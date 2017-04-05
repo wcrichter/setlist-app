@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
     <header className="mw9 center ph3-ns bb">
       <div className="cf ph2-ns">
         <div className="fl w-third pa2">
-          <a href="link">
-            <p className="dib v-mid"><i className="fa fa-chevron-left mr1" />Projects</p>
-          </a>
+          <Link to="/">
+          <p className="dib v-mid link"><i className="fa fa-chevron-left mr1" />Projects</p>
+          </Link>  
         </div>
         <div className="fl w-third pa2 center tc">
           <p className="dib v-mid">Band Name</p>

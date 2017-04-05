@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ListGigs = () => {
   return (
@@ -9,7 +10,9 @@ const ListGigs = () => {
               <span className="f4 fw1">Viewing: All Setlists (9)</span>
             </div>
             <div className="fl w-50 ph2 pv4">
+              <Link to="gigs/add">
               <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Setlist</button>
+              </Link>
             </div>
           </div>
         </section>
