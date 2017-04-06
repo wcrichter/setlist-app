@@ -1,10 +1,10 @@
 import React from 'react'
-import ProfileTabs from '../components/profile-tabs'
+import NavProject from '../components/nav-project'
 
 const ProfilePage = () => {
   return (
     <div>
-      <ProfileTabs />
+      <NavProject />
       <section>
         <article className="pa4 mt2 cf">
           <div className="dib v-mid fl w-25">

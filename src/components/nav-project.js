@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProfileTabs = () => {
+const NavProject = () => {
   return (
     <section className="mw9 center">
       <div className="cf">
@@ -24,4 +24,4 @@ const ProfileTabs = () => {
   )
 }
 
-export default ProfileTabs
+export default NavProject
