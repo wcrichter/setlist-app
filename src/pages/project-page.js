@@ -18,6 +18,7 @@ const ProjectPage = () => {
         <Route exact path="/project" component={OverviewPage} />
         <Route exact path="/project/gigs" component={GigsPage} />
         <Route exact path="/project/gigs/add" component={PromptGigForm} />
+        <Route exact path="/project/gigs/add-form" component={FormGig} />
         <Route exact path="/project/gigs/gig-details" component={DetailsGig} />
         <Route exact path="/project/songs" component={SongsPage} />
         <Route exact path="/project/songs/song-details" component={DetailsSong} />

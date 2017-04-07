@@ -132,8 +132,22 @@ const song = function (song={
   return song
 }
 
+const ADD = 'ADD'
+const PREVIOUS = 'PREVIOUS'
+const NEXT = 'NEXT'
+
 const store = createStore(
   combineReducers({
+    panel: (state = 'step1', action) => {
+      switch(action.type) {
+        case PREVIOUS:
+          return action.payload
+        case NEXT:
+          return action.payload
+        default:
+          return state
+      }
+    },
     projects: projects,
     project: project,
     gigs: gigs,
