@@ -28,6 +28,7 @@ const ProjectsPage = (props) => {
         <h1 className="fw1 dib ma0">My Projects</h1>
         <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
       </section>
+
       <div className="mw9 center ph4 pt4">
         {map(project => <ListItemProject key={project.name} {...project} />, props.projects)}
       </div>

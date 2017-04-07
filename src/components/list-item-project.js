@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {identity} from 'ramda'
 
 const ListItemProject = (props) => {
   return (
-      <Link to="/project">
-        <div className="pa4 mv3 cf ba br3 black">
+      <Link to="/project" >
+        <div className="pa4 mv3 cf ba br3 black" onClick={e => props.setProject(props)}>
           <div className="dib fl w-20">
             <img src={props.imageURL} className="ba br-100 w-100" alt="" />
           </div>
@@ -19,6 +20,12 @@ const ListItemProject = (props) => {
   )
 }
 
-const connector = connect(state => state)
+const mapActionsToProps = dispatch => {
+  return {
+    setProject: (project) => dispatch({type: 'SET_PROJECT', payload: project}),
+  }
+}
+
+const connector = connect(state => state, mapActionsToProps)
 
 export default connector(ListItemProject)

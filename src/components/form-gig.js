@@ -18,22 +18,34 @@ const FormGig = (props) => {
             <form className="black">
               <div className="mb3">
                 <label htmlFor="name" className="f6 b db mb2">Name <span className="normal black-60">(optional)</span></label>
-                <input id="name" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" aria-describedby="name-desc" />
+                <input
+                  value={props.gig.name}
+                  onChange={e => props.setGigName(e.target.value)}
+                  id="name"
+                  className="input-reset ba b--black-20 pa2 mb2 db w-100"
+                  type="text"
+                  aria-describedby="name-desc" />
                 <small id="name-desc" className="f6 black-60 db mb2">Name of the event. (ie. "Kenny's 30'th Birthday Throwdown!")</small>
               </div>
               <div className="mb4">
                 <label htmlFor="name" className="f6 b db mb2">Venue </label>
-                <select className="ba b--black-20 pa2">
-                  <option value="key-a">Select A Venue</option>
-                  <option value="key-a">Venue Name 1 Goes Here</option>
-                  <option value="key-a">Venue Name 1 Goes Here</option>
-                </select>
+                <input
+                  value={props.gig.venue}
+                  onChange={e => props.setGigVenue(e.target.value)}
+                  id="name"
+                  className="input-reset ba b--black-20 pa2 mb2 db w-100"
+                  type="text"
+                  aria-describedby="name-desc" />
                 <button className="f6 ml3 bg-white ba b--black dim pointer pv1 black" type="submit">Add Venue</button>
               </div>
               <div className="cf mb3">
                 <div className="fl mr3">
                   <label htmlFor="name" className="f6 b db mb2">Date </label>
-                  <input type="text" className="input-reset ba b--black-20 pa2 mb2"/>
+                  <input
+                    value={props.gig.date}
+                    onChange={e => props.setGigDate(e.target.value)}
+                    type="text"
+                    className="input-reset ba b--black-20 pa2 mb2"/>
                   <small id="name-desc" className="f6 black-60 db mb2">YYYY/MM/DD</small>
                 </div>
                 <div className="fl mr3">
@@ -140,6 +152,8 @@ const FormGig = (props) => {
         onPrevious={e => props.previous('step2')}
         onFinish={e => {
           props.add(props.gig)
+          props.clearGigState()
+          props.reset()
           props.history.push('/project/gigs')}}>
         <div className="cf ph3 bt">
           <div className="fl w-40 ph2 pv4 br">
@@ -209,7 +223,12 @@ const mapActionsToProps = dispatch => {
   return {
     previous: (panel) => dispatch({type: 'PREVIOUS', payload: panel}),
     next: (panel) => dispatch({type: 'NEXT', payload: panel}),
-    add: (gig) => dispatch({type: 'ADD', payload: gig})
+    reset: (panel) => dispatch({type:'RESET'}),
+    setGigName: (name) => dispatch({type:'SET_GIG_NAME', payload: name}),
+    setGigVenue: (venue) => dispatch({type: 'SET_GIG_VENUE', payload: venue}),
+    setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
+    add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
+    clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'})
   }
 }
 

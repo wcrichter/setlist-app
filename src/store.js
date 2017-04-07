@@ -1,4 +1,5 @@
 import {createStore, combineReducers} from 'redux'
+import {append,merge} from 'ramda'
 
 const projects = function (projects=[
   {
@@ -36,15 +37,6 @@ const project = function (project={
   setlists: []
 }, action) {
   return project
-}
-
-const gigs = function (gigs=[
-  {date: "04/10/2017", name: "Flowertown Festival", venue: "Town Square"},
-  {date: "05/21/2017", name: "98 Rock Fest", venue: "Ladson Park Fairgrounds"},
-  {date: "04/10/2017", name: "General", venue: "The Orange Peel"},
-
-], action) {
-  return gigs
 }
 
 const gig = function (gig={
@@ -132,9 +124,17 @@ const song = function (song={
   return song
 }
 
-const ADD = 'ADD'
+const SET_PROJECT = 'SET_PROJECT'
+
+const ADD_GIG = 'ADD_GIG'
 const PREVIOUS = 'PREVIOUS'
 const NEXT = 'NEXT'
+
+const SET_GIG_NAME = 'SET_GIG_NAME'
+const SET_GIG_VENUE = 'SET_GIG_VENUE'
+const SET_GIG_DATE = 'SET_GIG_DATE'
+const CLEAR_GIG_STATE = 'CLEAR_GIG_STATE'
+const RESET = 'RESET'
 
 const store = createStore(
   combineReducers({
@@ -144,14 +144,66 @@ const store = createStore(
           return action.payload
         case NEXT:
           return action.payload
+        case RESET:
+          return 'step1'
         default:
           return state
       }
     },
     projects: projects,
-    project: project,
-    gigs: gigs,
-    gig: gig,
+    project: (state = {
+      id: "",
+      name: "",
+      city: "Charleston",
+      state: "SC",
+      genres: ["Rock", "Alternative", "Jam-Band"],
+      formed: "2009",
+      imageURL: "https://d31fr2pwly4c4s.cloudfront.net/f/7/5/908005_0_cabbage-the-shimmer-band-april_400.jpg"
+      }, action) => {
+        switch (action.type) {
+          case SET_PROJECT:
+            return merge(state, action.payload)
+          default:
+            return state
+        }
+      },
+    gigs: (state = [{
+      date: "04/10/2017",
+      name: "Test Gig 1",
+      type: "Fundraiser",
+      venue: "Town Square",
+      admission: "All Ages",
+      notes: "Lorem Ipsum",
+      setlist: []
+      }
+    ], action) => {
+      switch (action.type) {
+        case ADD_GIG:
+          return append(action.payload, state)
+        default:
+          return state
+      }
+    },
+    gig: (state = {
+      name: "",
+      venue: "",
+      date: ""
+    }, action) => {
+      switch (action.type) {
+        case CLEAR_GIG_STATE:
+          return { name: "",
+          venue: "",
+          date: ""}
+        case SET_GIG_NAME:
+          return merge(state, {name: action.payload})
+        case SET_GIG_VENUE:
+          return merge(state, {venue: action.payload})
+        case SET_GIG_DATE:
+          return merge(state, {date: action.payload})
+        default:
+          return state
+      }
+    },
     songs: songs,
     song: song
   })

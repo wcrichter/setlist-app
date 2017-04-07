@@ -61,7 +61,9 @@ const DetailsGig = (props) => {
               <div className="f4 fw1">
                 Setlist
                 <ul className="list pl0">
+                  {/*
                   {map(li => <ListItemGigSetlist {...li} />, props.gig.setlist)}
+                  */}
                 </ul>
               </div>
             </div>

@@ -16,7 +16,7 @@ const ListGigs = (props) => {
             </div>
             <div className="fl w-50 ph2 pv4">
               <Link to="/project/gigs/add">
-              <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Setlist</button>
+              <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Gig</button>
               </Link>
             </div>
           </div>
