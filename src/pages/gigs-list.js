@@ -1,16 +1,21 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
+import { map, length, sortBy, prop } from 'ramda'
+import ButtonCTA from '../components/button-cta'
+import ListItemGig from '../components/list-item-gig'
 
-const ListGigs = () => {
+const ListGigs = (props) => {
+  console.log(props.gigs.length)
   return (
       <div>
         <section className="mw9 center pt3 ph3-ns bb">
           <div className="cf ph2-ns">
             <div className="fl w-50 ph2 pv4">
-              <span className="f4 fw1">Viewing: All Setlists (9)</span>
+              <span className="f4 fw1">All Gigs ({[props.gigs.length]})</span>
             </div>
             <div className="fl w-50 ph2 pv4">
-              <Link to="gigs/add">
+              <Link to="/project/gigs/add">
               <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Setlist</button>
               </Link>
             </div>
@@ -18,30 +23,7 @@ const ListGigs = () => {
         </section>
         <section className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
           <ul className="list pl0 center ph3-ns">
-            <li className="ba br3 pa3 mb2 cf">
-              <div className="fl w-25-ns">Date</div>
-              <div className="fl w-50-ns">
-                <p className="ma0">Event Name</p>
-                <p className="ma0 pt2 f6">Location</p>
-              </div>
-              <div className="fl w-25-ns tr">19 Songs</div>
-            </li>
-            <li className="ba br3 pa3 mb2 cf">
-              <div className="fl w-25-ns">Date</div>
-              <div className="fl w-50-ns">
-                <p className="ma0">Event Name</p>
-                <p className="ma0 pt2 f6">Location</p>
-              </div>
-              <div className="fl w-25-ns tr">19 Songs</div>
-            </li>
-            <li className="ba br3 pa3 mb2 cf">
-              <div className="fl w-25-ns">Date</div>
-              <div className="fl w-50-ns">
-                <p className="ma0">Event Name</p>
-                <p className="ma0 pt2 f6">Location</p>
-              </div>
-              <div className="fl w-25-ns tr">19 Songs</div>
-            </li>
+            {map(li => <ListItemGig key={props.name}{...li} />, props.gigs)}
             <li className="ba br3 pa3 mb2 cf bg-black-10">
               <div className="fl w-25-ns">Date</div>
               <div className="fl w-50-ns">
@@ -57,4 +39,6 @@ const ListGigs = () => {
   )
 }
 
-export default ListGigs
+const connector = connect(state => state)
+
+export default connector(ListGigs)

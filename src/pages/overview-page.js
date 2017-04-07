@@ -1,19 +1,19 @@
 import React from 'react'
-import NavProject from '../components/nav-project'
+import { connect } from 'react-redux'
+import { map } from 'ramda'
 
-const ProfilePage = () => {
+const OverviewPage = (props) => {
   return (
     <div>
-      <NavProject />
       <section>
         <article className="pa4 mt2 cf">
           <div className="dib v-mid fl w-25">
             <img src="http://mrmrs.io/photos/p/2.jpg" className="ba br-100 w-100" alt=""/>
           </div>
           <div className="dib v-mid fl w-75 w-50-ns pl4">
-            <h1 className="f3 f2-ns fw1 mb0">Project Name</h1>
-            <h2 className="f4 f3-ns fw1 mb0 mt2">Location</h2>
-            <h2 className="f6 f5-ns fw1 mb0">Genre</h2>
+            <h1 className="f3 f2-ns fw1 mb0">{props.project.name}</h1>
+            <h2 className="f4 f3-ns fw1 mb0 mt2">{props.project.city}</h2>
+            <h2 className="f6 f5-ns fw1 mb0">{map(genre => genre + ", ", props.project.genres)}</h2>
           </div>
           <div className="dib v-mid fl w-100 w-25-ns">
             <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Edit Project</button>
@@ -85,4 +85,6 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage
+const connector = connect(state => state)
+
+export default connector(OverviewPage)

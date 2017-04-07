@@ -1,7 +1,8 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const NavMain = () => {
+const NavMain = (props) => {
   return (
     <header className="mw9 center ph3-ns bb">
       <div className="cf ph2-ns">
@@ -11,7 +12,7 @@ const NavMain = () => {
           </Link>
         </div>
         <div className="fl w-third pa2 center tc">
-          <p className="dib v-mid">Band Name</p>
+          <p className="dib v-mid">{props.project.name}</p>
         </div>
         <div className="fl w-third pa2 tr">
           <a href="link">
@@ -23,4 +24,6 @@ const NavMain = () => {
   )
 }
 
-export default NavMain
+const connector = connect(state => state)
+
+export default connector(NavMain)

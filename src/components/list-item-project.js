@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 const ListItemProject = (props) => {
   return (
@@ -18,8 +19,6 @@ const ListItemProject = (props) => {
   )
 }
 
-ListItemProject.propTypes = {
-  imageURL: React.PropTypes.string
-}
+const connector = connect(state => state)
 
-export default ListItemProject
+export default connector(ListItemProject)

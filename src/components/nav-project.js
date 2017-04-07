@@ -1,23 +1,25 @@
 import React from 'react'
+import {Route, Link} from 'react-router-dom'
+import GigsPage from '../pages/gigs-page'
 
 const NavProject = () => {
   return (
-    <section className="mw9 center">
+    <section className="mw9 center bb">
       <div className="cf">
-        <div className="fl w-third tc f4 bg-black-30 bb">
-          <a href="" className="link no-underline black">
-            <p className="dib v-mid">Analytics</p>
-          </a>
+        <div className="fl w-third tc f4">
+          <Link to="/project" className="link no-underline">
+            <p className="dib v-mid">Overview</p>
+          </Link>
         </div>
-        <div className="fl w-third tc f4 bl ">
-          <a href="" className="link no-underline black">
-            <p className="dib v-mid">Setlists</p>
-          </a>
+        <div className="fl w-third tc f4">
+          <Link to="/project/gigs" className="link no-underline">
+            <p className="dib v-mid">Gigs</p>
+          </Link>
         </div>
-        <div className="fl w-third tc f4 bg-black-30 bl bb">
-          <a href="" className="link no-underline black">
+        <div className="fl w-third tc f4">
+          <Link to="/project/songs" className="link no-underline">
             <p className="dib v-mid">Songs</p>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

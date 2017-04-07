@@ -1,16 +1,13 @@
 import React from 'react'
 import NavProject from '../components/nav-project'
-import ListGigs from './sub-gigs/list-gigs'
-import AddGig from './sub-gigs/add-gig'
-import DetailsGig from './sub-gigs/details-gig'
+import ListGigs from './gigs-list'
+import AddGig from './gigs-add'
+import DetailsGig from './gig-details'
 
 const GigsPage = () => {
   return (
     <div>
-    <NavProject />
-    <ListGigs />
-    <AddGig />
-    <DetailsGig />
+      <ListGigs />
     </div>
   )
 }

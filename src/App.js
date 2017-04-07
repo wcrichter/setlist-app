@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import NavMain from './components/nav-main'
 import ProjectPage from './pages/project-page'
 import ProjectsPage from './pages/projects-page'
-import ProfilePage from './pages/profile-page'
-import GigsPage from './pages/gigs-page'
+import './index.css'
 
 class App extends Component {
   render() {
