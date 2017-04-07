@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { map, length, sortBy, prop, compose } from 'ramda'
+import { map, length, sortBy, prop } from 'ramda'
 import ListItemSong from '../components/list-item-song'
 
 
@@ -8,7 +8,7 @@ const SongsPage = (props) => {
   const artistSort = sortBy(prop('artist'))
   return (
       <div>
-        <section className="mw9 center pt3 ph3-ns bb">
+        <section className="mw9 center ph3-ns bb">
           <div className="cf ph2-ns">
             <div className="fl w-50 ph2 pv4">
               <span className="f4 fw1">All Songs ({[props.songs.length]})</span>

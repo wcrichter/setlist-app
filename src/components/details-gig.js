@@ -1,16 +1,26 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import { map } from 'ramda'
+import ListItemGigSetlist from '../components/list-item-gig-setlist'
+import ButtonBasic from '../components/button-basic'
 
-const DetailsGig = () => {
+const DetailsGig = (props) => {
   return (
     <div>
       <section className="mw9 center pt4 ph4-ns">
         <div className="ba">
           <div className="cf ph3 bb">
             <div className="fl w-75 ph2 pv4">
-              <span className="f3 fw1">Carolina Childrens Charity</span>
+              <span className="f3 fw1">{props.gig.name}</span>
             </div>
-            <div className="fl w-25 ph2 pv4">
-              <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Cancel</button>
+            <div className="fr tr w-25 ph2 pv4">
+              <Link to="/project/gigs/add">
+                <i className="fa fa-pencil fa-2x" aria-hidden="true"/>
+              </Link>
+              <Link to="/project/gigs">
+                <i className="fa fa-close fa-2x ml4" aria-hidden="true"/>
+              </Link>
             </div>
           </div>
           <div className="cf ph3">
@@ -20,21 +30,21 @@ const DetailsGig = () => {
                 <ul className="list pl0">
                   <li className="pb1 mb2">
                     <label className="f6 fw6">When</label><br />
-                    <span className="f5">10/12/2017, {`9pm-10pm`}</span>
+                    <span className="f5">{props.gig.date}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Event Type</label><br />
-                    <span className="f5">Funraiser</span>
+                    <span className="f5">{props.gig.type}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Venue</label><br />
-                    <span className="f5">Wild Wing Cafe</span><br />
+                    <span className="f5">{props.gig.venue}</span><br />
                     <span className="f6">Street Address</span><br />
                     <span className="f6">City, ST</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Addmision</label><br />
-                    <span className="f5">All Ages</span>
+                    <span className="f5">{props.gig.admission}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Notes</label><br />
@@ -51,25 +61,10 @@ const DetailsGig = () => {
               <div className="f4 fw1">
                 Setlist
                 <ul className="list pl0">
-                  <li className="pb1 mb2 bb b--black-10">
-                    <span className="f5">Song Name</span><br />
-                    <span className="f6">Artist</span>
-                  </li>
-                  <li className="pb1 mb2 bb b--black-10">
-                    <span className="f5">Song Name</span><br />
-                    <span className="f6">Artist</span>
-                  </li>
-                  <li className="pb1 mb2 bb b--black-10">
-                    <span className="f5">Song Name</span><br />
-                    <span className="f6">Artist</span>
-                  </li>
+                  {map(li => <ListItemGigSetlist {...li} />, props.gig.setlist)}
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="center tc pv3 bt">
-            <button className="f6 mh1 bg-white ba b--black dim pointer black" type="submit">Back</button>
-            <button className="f6 mh1 bg-white ba b--black dim pointer black" type="submit">Next</button>
           </div>
         </div>
       </section>
@@ -78,4 +73,6 @@ const DetailsGig = () => {
   )
 }
 
-export default DetailsGig
+const connector = connect(state => state)
+
+export default connector(DetailsGig)

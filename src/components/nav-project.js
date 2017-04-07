@@ -1,6 +1,5 @@
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
-import GigsPage from '../pages/gigs-page'
+import {Link} from 'react-router-dom'
 
 const NavProject = () => {
   return (

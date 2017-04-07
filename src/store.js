@@ -47,6 +47,45 @@ const gigs = function (gigs=[
   return gigs
 }
 
+const gig = function (gig={
+  date: "04/10/2017",
+  name: "Flowertown Festival",
+  type: "Fundraiser",
+  venue: "Town Square",
+  admission: "All Ages",
+  notes: "Lorem Ipsum",
+  setlist: [
+    {
+      id: "song_weezer_say_it_aint_so",
+      type: "song",
+      projectId: "project_fowlers_mustache",
+      title: "Say It Aint So",
+      artist: "Weezer",
+      album: "Blue Album",
+      genres: ["Alternative", "Surf Rock"],
+      songKey: "C#",
+      explicit: false,
+      status: "active",
+      tags: ["90s", "Sing-along", "solo"],
+      lyrics: "Somebody's Heine is crowding my ice box..."},
+    {
+      id: "song_weezer_say_it_aint_so",
+      type: "song",
+      projectId: "project_fowlers_mustache",
+      title: "Say It Aint So",
+      artist: "Weezer",
+      album: "Blue Album",
+      genres: ["Alternative", "Surf Rock"],
+      songKey: "C#",
+      explicit: false,
+      status: "active",
+      tags: ["90s", "Sing-along", "solo"],
+      lyrics: "Somebody's Heine is crowding my ice box..."},
+  ]
+}, action) {
+  return gig
+}
+
 const songs = function (songs=[
   {
     id: "song_weezer_say_it_aint_so",
@@ -84,7 +123,7 @@ const song = function (song={
   artist: "Weezer",
   album: "Blue Album",
   genres: ["Alternative", "Surf Rock"],
-  key: "C#",
+  songKey: "C#",
   explicit: false,
   status: "active",
   tags: ["90s", "Sing-along", "solo"],
@@ -98,6 +137,7 @@ const store = createStore(
     projects: projects,
     project: project,
     gigs: gigs,
+    gig: gig,
     songs: songs,
     song: song
   })

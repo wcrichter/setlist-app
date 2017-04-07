@@ -109,38 +109,7 @@ const FormGig = (props) => {
               <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Cancel</button>
             </div>
           </div>
-          <div className="cf ph3">
-            <div className="fl w-100 ph2 mt4 mb5">
-              <div className="f4 fw1 mb4">
-                Select a method to build your setlist.
-              </div>
-              <div className="w-50 center tc f3 fw1 mt5 mb4">
-                How would you like to build your gig setlist?
-              </div>
-              <a href="">
-                <div className="pa4 mv3 center cf ba br3 w-80">
-                  <div className="dib fl w-10">
-                    <i className="fa fa-magic fa-3x" aria-hidden="true" />
-                  </div>
-                  <div className="dib fl w-90 pl4">
-                    <h1 className="f3 fw1 mt0 mb3">Smart Build</h1>
-                    <span className="f6 fw1">{`Automatically initialize a setlist based on information you've provided about your gig. Don't worry, you can still edit this selection.`}</span>
-                  </div>
-                </div>
-              </a>
-              <a href="">
-                <div className="pa4 mv3 center cf ba br3 w-80">
-                  <div className="dib fl w-10">
-                    <i className="fa fa-list-alt fa-3x" aria-hidden="true" />
-                  </div>
-                  <div className="dib fl w-90 pl4">
-                    <h1 className="f3 fw1 mt0 mb3">Manual Build</h1>
-                    <span className="f6 fw1">{`Select songs from your project's available song selection.`}</span>
-                  </div>
-                </div>
-                </a>
-            </div>
-          </div>
+          
           <div className="center tc pv3 bt">
             <button className="f6 mh1 bg-white ba b--black dim pointer black" type="submit">Back</button>
             <button className="f6 mh1 bg-white ba b--black dim pointer black" type="submit">Next</button>

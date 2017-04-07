@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const ListItemSong = (props) => {
   return (
-      <Link to="/project">
+      <Link to="/project/songs/song-details">
         <li className="ba br3 pa3 mb2 cf">
           <div className="fl w-25-ns">{props.artist}</div>
           <div className="fl w-50-ns">
