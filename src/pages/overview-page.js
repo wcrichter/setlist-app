@@ -8,7 +8,7 @@ const OverviewPage = (props) => {
       <section>
         <article className="pa4 mt2 cf">
           <div className="dib v-mid fl w-25">
-            <img src="http://mrmrs.io/photos/p/2.jpg" className="ba br-100 w-100" alt=""/>
+            <img src={props.project.imageURL} className="ba br-100 w-100" alt=""/>
           </div>
           <div className="dib v-mid fl w-75 w-50-ns pl4">
             <h1 className="f3 f2-ns fw1 mb0">{props.project.name}</h1>

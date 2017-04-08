@@ -3,17 +3,23 @@ import {append,merge} from 'ramda'
 
 const projects = function (projects=[
   {
-    id: "",
+    _id: "project_fowlers_mustache_charleston",
+    _type: "project",
     name: "Fowler's Mustache",
     city: "Charleston",
     state: "SC",
     genres: ["Rock", "Alternative", "Jam-Band"],
     formed: "2009",
     imageURL: "https://d31fr2pwly4c4s.cloudfront.net/f/7/5/908005_0_cabbage-the-shimmer-band-april_400.jpg",
-    songs: [],
-    setlists: []
+    songs: [{
+      _songId: "song_weezer_say_it_aint_so",
+      title: "Say It Aint So",
+      artist: "Weezer",
+    }],
+    gigs: []
   },{
-    id: "",
+    _id: "project_old_town_pickers_steamboat_springs",
+    _type: "project",
     name: "Old Town Pickers",
     city: "Steamboat Springs",
     state: "CO",
@@ -40,6 +46,9 @@ const project = function (project={
 }
 
 const gig = function (gig={
+  _id: "gig_20170410_town_square",
+  _type: "gig",
+  _projectId: "project_fowlers_mustache_charleston",
   date: "04/10/2017",
   name: "Flowertown Festival",
   type: "Fundraiser",

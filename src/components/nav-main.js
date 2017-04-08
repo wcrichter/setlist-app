@@ -15,7 +15,7 @@ const NavMain = (props) => {
           <p className="dib v-mid">{props.project.name}</p>
         </div>
         <div className="fl w-third pa2 tr">
-          <a href="link">
+          <a href="">
             <p className="dib v-mid">Profile</p>
           </a>
         </div>
