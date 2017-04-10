@@ -45,63 +45,6 @@ const project = function (project={
   return project
 }
 
-const gig = function (gig={
-  _id: "gig_20170410_town_square",
-  _type: "gig",
-  _projectId: "project_fowlers_mustache_charleston",
-  date: "04/10/2017",
-  name: "Flowertown Festival",
-  type: "Fundraiser",
-  venue: "Town Square",
-  admission: "All Ages",
-  notes: "Lorem Ipsum",
-  setlist: [
-    {
-      id: "song_weezer_say_it_aint_so",
-      type: "song",
-      projectId: "project_fowlers_mustache",
-      title: "Say It Aint So",
-      artist: "Weezer",
-      album: "Blue Album",
-      genres: ["Alternative", "Surf Rock"],
-      songKey: "C#",
-      explicit: false,
-      status: "active",
-      tags: ["90s", "Sing-along", "solo"],
-      lyrics: "Somebody's Heine is crowding my ice box..."},
-    {
-      id: "song_weezer_say_it_aint_so",
-      type: "song",
-      projectId: "project_fowlers_mustache",
-      title: "Say It Aint So",
-      artist: "Weezer",
-      album: "Blue Album",
-      genres: ["Alternative", "Surf Rock"],
-      songKey: "C#",
-      explicit: false,
-      status: "active",
-      tags: ["90s", "Sing-along", "solo"],
-      lyrics: "Somebody's Heine is crowding my ice box..."},
-  ]
-}, action) {
-  return gig
-}
-
-const song = function (song={
-  id: "",
-  title: "Say It Aint So",
-  artist: "Weezer",
-  album: "Blue Album",
-  genres: ["Alternative", "Surf Rock"],
-  songKey: "C#",
-  explicit: false,
-  status: "active",
-  tags: ["90s", "Sing-along", "solo"],
-  lyrics: "Somebody's Heine is crowding my ice box..."
-}, action ) {
-  return song
-}
-
 const SET_PROJECT = 'SET_PROJECT'
 
 const ADD_GIG = 'ADD_GIG'
@@ -160,9 +103,10 @@ const store = createStore(
         case 'SET_GIG':
           return action.payload
         case CLEAR_GIG_STATE:
-          return { name: "",
-          venue: "",
-          date: ""}
+          return {
+            name: "",
+            venue: "",
+            date: ""}
         case SET_GIG_NAME:
           return merge(state, {name: action.payload})
         case SET_GIG_VENUE:
@@ -184,6 +128,14 @@ const store = createStore(
     song: (state = {}, action) => {
       switch(action.type) {
         case 'SET_SONG':
+          return action.payload
+        default:
+          return state
+      }
+    },
+    gigSelectSongs: (state=[], action) => {
+      switch(action.type) {
+        case 'GET_SONGS_FOR_FORM':
           return action.payload
         default:
           return state

@@ -25,7 +25,10 @@ class ListGigs extends React.Component{
             </div>
             <div className="fl w-50 ph2 pv4">
               <Link to="/project/gigs/add">
-              <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Gig</button>
+                <button
+                  className="f6 fr bg-white ba b--black dim pointer pv1 black"
+                  type="submit"
+                  onClick={(e) => props.dispatch({type: 'CLEAR_GIG_STATE'})}>Add Gig</button>
               </Link>
             </div>
           </div>
