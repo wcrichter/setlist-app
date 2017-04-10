@@ -5,18 +5,9 @@ import { map, length, sortBy, prop } from 'ramda'
 import ButtonCTA from '../components/button-cta'
 import ListItemGig from '../components/list-item-gig'
 
-class ListGigs extends React.Component{
-  componentDidMount() {
-    fetch('http://localhost:8080/gigs')
-      .then(res => res.json())
-      .then(gigs => this.props.dispatch({
-        type: 'SET_GIGS',
-        payload: gigs
-      }))
-  }
-  render() {
-    const props = this.props
-    return (
+const ListGigs = (props) => {
+  console.log(props.gigs.length)
+  return (
       <div>
         <section className="mw9 center ph3-ns bb">
           <div className="cf ph2-ns">
@@ -45,8 +36,7 @@ class ListGigs extends React.Component{
           </ul>
         </section>
       </div>
-    )
-  }
+  )
 }
 
 const connector = connect(state => state)

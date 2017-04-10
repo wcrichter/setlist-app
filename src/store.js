@@ -87,37 +87,6 @@ const gig = function (gig={
   return gig
 }
 
-const songs = function (songs=[
-  {
-    id: "song_weezer_say_it_aint_so",
-    type: "song",
-    projectId: "project_fowlers_mustache",
-    title: "Say It Aint So",
-    artist: "Weezer",
-    album: "Blue Album",
-    genres: ["Alternative", "Surf Rock"],
-    key: "C#",
-    explicit: false,
-    status: "active",
-    tags: ["90s", "Sing-along", "solo"],
-    lyrics: "Somebody's Heine is crowding my ice box..."
-  },{
-    id: "song_lit_my_own_worst_enemy",
-    type: "song",
-    projectId: "project_fowlers_mustache",
-    title: "My Own Worst Enemy",
-    artist: "Lit",
-    album: "Closer To The Sun",
-    genres: ["Alternative", "Rock", "Punk"],
-    key: "E",
-    explicit: true,
-    status: "active",
-    tags: ["90s", "Rowdy", "Energy"],
-    lyrics: "It's no surprise to me I am my own worst enemy..."
-  }], action) {
-  return songs
-}
-
 const song = function (song={
   id: "",
   title: "Say It Aint So",
@@ -176,29 +145,20 @@ const store = createStore(
             return state
         }
       },
-    gigs: (state = [{
-      date: "04/10/2017",
-      name: "Test Gig 1",
-      type: "Fundraiser",
-      venue: "Town Square",
-      admission: "All Ages",
-      notes: "Lorem Ipsum",
-      setlist: []
-      }
-    ], action) => {
+    gigs: (state = [], action) => {
       switch (action.type) {
+        case 'SET_GIGS':
+          return action.payload
         case ADD_GIG:
           return append(action.payload, state)
         default:
           return state
       }
     },
-    gig: (state = {
-      name: "",
-      venue: "",
-      date: ""
-    }, action) => {
+    gig: (state = {}, action) => {
       switch (action.type) {
+        case 'SET_GIG':
+          return action.payload
         case CLEAR_GIG_STATE:
           return { name: "",
           venue: "",
@@ -213,8 +173,22 @@ const store = createStore(
           return state
       }
     },
-    songs: songs,
-    song: song
+    songs: (state = [], action) => {
+      switch(action.type) {
+        case 'LOAD_GIGS':
+          return action.payload
+        default:
+          return state
+      }
+    },
+    song: (state = {}, action) => {
+      switch(action.type) {
+        case 'SET_SONG':
+          return action.payload
+        default:
+          return state
+      }
+    }
   })
 )
 
