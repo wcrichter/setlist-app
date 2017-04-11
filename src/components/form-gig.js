@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { equals, identity, map } from 'ramda'
+import { equals, identity, map, filter } from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ButtonBasic from './button-basic'
 import ButtonCTA from './button-cta'
@@ -155,14 +155,16 @@ class FormGig extends React.Component {
           <div className="mw9 center bb">
             <div className="cf ph2-ns">
               <div className="fl w-75 ph3 pb4">
-                <span className="f4 fw1 mr3">Selected Songs: 3 of 29</span>
+                <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected,props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
                 <button className="f6 bg-white ba b--black dim pointer pv1 black" type="submit">View Selected</button>
               </div>
             </div>
           </div>
           <div className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
             <ul className="list pl0 center ph2-ns">
-              {map(li => <SelectorItemSong selected={false} key={li._id} {...li} />, props.gigSelectSongs)}
+              {map(song => <SelectorItemSong bgColor={'gray'} selected={song.selected} key={song._id} {...song}
+                onSelected={props.toggleSong(song._id)}
+                 />, props.gigSelectSongs)}
             </ul>
           </div>
         </Panel>
@@ -218,18 +220,11 @@ class FormGig extends React.Component {
               <div className="f4 fw1">
                 Setlist
                 <ul className="list pl0">
+                {map(song =>
                   <li className="pb1 mb2 bb b--black-10">
-                    <span className="f5">Song Name</span><br />
-                    <span className="f6">Artist</span>
-                  </li>
-                  <li className="pb1 mb2 bb b--black-10">
-                    <span className="f5">Song Name</span><br />
-                    <span className="f6">Artist</span>
-                  </li>
-                  <li className="pb1 mb2 bb b--black-10">
-                    <span className="f5">Song Name</span><br />
-                    <span className="f6">Artist</span>
-                  </li>
+                    <span className="f5">{song.title}</span><br />
+                    <span className="f6">{song.artist}</span>
+                  </li> , filter(song => song.selected,props.gigSelectSongs))}
                 </ul>
               </div>
             </div>
@@ -251,7 +246,8 @@ const mapActionsToProps = dispatch => {
     setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
-    getSongsForForm: (songs) => dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs})
+    getSongsForForm: (songs) => dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}),
+    toggleSong: (id) => e => dispatch({type: 'TOGGLE_SONG', payload: id }),
   }
 }
 

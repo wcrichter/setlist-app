@@ -1,17 +1,20 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 const SelectorItemSong = (props) => {
+
   return (
-    <li className="ba br3 pa3 mb2 cf">
+    <li
+      className={`ba br3 pa3 mb2 cf pointer bg-${!props.selected ? "white" : "yellow"}`}
+      onClick={props.onSelected}
+      >
       <div className="fl w-25-ns">{props.artist}</div>
       <div className="fl w-50-ns">
         <p className="ma0">{props.title}</p>
       </div>
-      <div
-        className="fl w-25-ns tr"
-        >
-        <i className="fa fa-plus" aria-hidden="true"/>
+      <div className="fl w-25-ns tr">
+        {!props.selected ? <i className="fa fa-plus" aria-hidden="true"/> : <i className="fa fa-minus" aria-hidden="true"/> }
       </div>
     </li>
   )

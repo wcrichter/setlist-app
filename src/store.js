@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux'
-import {append,merge} from 'ramda'
+import {append,merge,map} from 'ramda'
 
 const projects = function (projects=[
   {
@@ -137,6 +137,13 @@ const store = createStore(
       switch(action.type) {
         case 'GET_SONGS_FOR_FORM':
           return action.payload
+        case 'TOGGLE_SONG':
+          return map(song => {
+            if (song._id === action.payload) {
+              song.selected = !song.selected
+            }
+            return song
+          },  state)
         default:
           return state
       }
