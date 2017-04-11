@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { equals, identity, map, filter } from 'ramda'
+import { equals, identity, map, filter, path } from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ButtonBasic from './button-basic'
 import ButtonCTA from './button-cta'
@@ -37,6 +37,11 @@ class FormGig extends React.Component {
 
   render() {
     const props = this.props
+    if(!path(['gig'], props)) {
+      return(
+        <div><h1>Loading</h1></div>
+      )
+    } else {
     return (
       <div className="mw9 center pv4 ph4-ns">
         {equals(props.panel, 'step1') &&
@@ -155,7 +160,7 @@ class FormGig extends React.Component {
           <div className="mw9 center bb">
             <div className="cf ph2-ns">
               <div className="fl w-75 ph3 pb4">
-                <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected,props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
+                <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected, props.gig.songs).length} of {props.gig.songs.length}</span>
                 <button className="f6 bg-white ba b--black dim pointer pv1 black" type="submit">View Selected</button>
               </div>
             </div>
@@ -164,7 +169,7 @@ class FormGig extends React.Component {
             <ul className="list pl0 center ph2-ns">
               {map(song => <SelectorItemSong bgColor={'gray'} selected={song.selected} key={song._id} {...song}
                 onSelected={props.toggleSong(song._id)}
-                 />, props.gigSelectSongs)}
+                 />, props.gig.songs)}
             </ul>
           </div>
         </Panel>
@@ -174,7 +179,7 @@ class FormGig extends React.Component {
           instructions="Review and save your gig!"
           onPrevious={e => props.previous('step2')}
           onFinish={e => {
-            props.add(props.gig)
+            props.submit(props.gig)
             props.clearGigState()
             props.reset()
             props.history.push('/project/gigs')}}>
@@ -224,7 +229,7 @@ class FormGig extends React.Component {
                   <li className="pb1 mb2 bb b--black-10">
                     <span className="f5">{song.title}</span><br />
                     <span className="f6">{song.artist}</span>
-                  </li> , filter(song => song.selected,props.gigSelectSongs))}
+                  </li> , filter(song => song.selected, props.gig.songs))}
                 </ul>
               </div>
             </div>
@@ -233,6 +238,7 @@ class FormGig extends React.Component {
         }
       </div>
     )
+  }
   }
 }
 
@@ -248,6 +254,24 @@ const mapActionsToProps = dispatch => {
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
     getSongsForForm: (songs) => dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}),
     toggleSong: (id) => e => dispatch({type: 'TOGGLE_SONG', payload: id }),
+    submit: (history, gig) => (e) => {
+      e.preventDefault()
+      if(gig._id) {
+        putGig(gig)
+          .then(res => res.json()).then(res => {
+            dispatch({type: 'CLEAR_GIG_STATE'})
+            history.push('/')
+          })
+
+      } else {
+        postGig(gig)
+          .then(res => res.json()).then(res => {
+            dispatch({type: 'CLEAR_GIG_STATE'})
+            history.push('/')
+          }).catch(err => console.log(err.message))
+
+      }
+    }
   }
 }
 
