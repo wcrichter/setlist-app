@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { map, length } from 'ramda'
+import { map, length, sortBy, prop } from 'ramda'
 import ListItemGig from '../components/list-item-gig'
 
 class ListGigs extends React.Component{
@@ -34,7 +34,7 @@ class ListGigs extends React.Component{
         </section>
         <section className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
           <ul className="list pl0 center ph3-ns">
-            {map(li => <ListItemGig key={li.name}{...li} />, props.gigs)}
+            {sortBy(prop('date'), map(li => <ListItemGig key={li.name}{...li} />, props.gigs))}
             <li className="ba br3 pa3 mb2 cf bg-black-10">
               <div className="fl w-25-ns">Date</div>
               <div className="fl w-50-ns">

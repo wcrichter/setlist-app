@@ -38,7 +38,7 @@ class DetailsGig extends React.Component{
               </div>
             </div>
             <div className="cf ph3">
-              <div className="fl w-40 ph2 pv4 br">
+              <div className="fl w-30 pl2 pr4 pv4 br">
                 <div className="f4 fw1">
                   Gig Information
                   <ul className="list pl0">
@@ -48,21 +48,19 @@ class DetailsGig extends React.Component{
                     </li>
                     <li className="pb1 mb2">
                       <label className="f6 fw6">Event Type</label><br />
-                      <span className="f5">{props.gig.type}</span>
+                      <span className="f5">{props.gig.eventType}</span>
                     </li>
                     <li className="pb1 mb2">
                       <label className="f6 fw6">Venue</label><br />
                       <span className="f5">{props.gig.venue}</span><br />
-                      <span className="f6">Street Address</span><br />
-                      <span className="f6">City, ST</span>
                     </li>
                     <li className="pb1 mb2">
                       <label className="f6 fw6">Addmision</label><br />
                       <span className="f5">{props.gig.admission}</span>
                     </li>
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">Notes</label><br />
-                      <span className="f6">Hopped up on catnip. Lay on arms while youre using the keyboard wake up wander around the house.</span>
+                      <label className="f6 fw6">Description</label><br />
+                      <span className="f6">{props.gig.description}</span>
                     </li>
                     <li className="pb1 mb2">
                       <label className="f6 fw6">Tags</label><br />
@@ -71,7 +69,7 @@ class DetailsGig extends React.Component{
                   </ul>
                 </div>
               </div>
-              <div className="fl w-60 ph4 pv4">
+              <div className="fl w-70 pl4 pr3 pv4">
                 <div className="f4 fw1">
                   Setlist
                   <ul className="list pl0">

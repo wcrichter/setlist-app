@@ -7,6 +7,14 @@ import ButtonBasic from './button-basic'
 import ButtonCTA from './button-cta'
 import Panel from './panel'
 import SelectorItemSong from './selector-item-song'
+import DropdownList from 'react-widgets/lib/DropdownList'
+
+import 'react-widgets/dist/css/react-widgets.css'
+import DateTimePicker from 'react-widgets/lib/DateTimePicker'
+import moment from 'moment'
+import momentLocaliser from 'react-widgets/lib/localizers/moment'
+
+momentLocaliser(moment)
 
 const postGig = (gig) => {
     console.log("Here's the gig", gig)
@@ -41,6 +49,8 @@ class FormGig extends React.Component {
   render() {
     const props = this.props
     const filteredSelectedSongs = filter(song => song.selected, props.gigSelectSongs)
+    const eventTypes = ['Rehearsal', 'Bar', 'Private', 'Concert', 'Festival', 'Fundraiser', 'Other']
+
     if(!path(['gig'], props)) {
       return(
         <div><h1>Loading</h1></div>
@@ -83,38 +93,22 @@ class FormGig extends React.Component {
                     <input
                       value={props.gig.date}
                       onChange={e => props.setGigDate(e.target.value)}
-                      type="text"
+                      type="date"
                       className="input-reset ba b--black-20 pa2 mb2"/>
-                    <small id="name-desc" className="f6 black-60 db mb2">YYYY/MM/DD</small>
                   </div>
                   <div className="fl mr3">
                     <label htmlFor="name" className="f6 b db mb2">Start Time <span className="normal black-60">(optional)</span></label>
                     <input
-                      type="text"
+                      type="time"
                       value={props.gig.startTime}
-                      className="input-reset ba b--black-20 pa2 mb2"/>
-                  </div>
-                  <div className="fl mr3">
-                    <label htmlFor="name" className="f6 b db mb2">End Time <span className="normal black-60">(optional)</span></label>
-                    <input
-                      type="text"
-                      value={props.gig.endTime}
                       className="input-reset ba b--black-20 pa2 mb2"/>
                   </div>
                 </div>
                 <div className="mb4">
                   <label htmlFor="name" className="f6 b db mb2">Event Type </label>
-                  <select
-                    value={props.gig.eventType}
-                    className="ba b--black-20 pa2">
-                      <option value="key-a">Select Type</option>
-                      <option value="key-a">Rehearsal</option>
-                      <option value="key-a">Bar</option>
-                      <option value="key-a">Private</option>
-                      <option value="key-a">Concert</option>
-                      <option value="key-a">Festival</option>
-                      <option value="key-a">Fundraiser</option>
-                      <option value="key-a">Other</option>
+                  <select onChange={e => props.setGigEventType(e.target.value)}>
+                    <option value="option 1">Option 1</option>
+                    <option value="option 2">Option 2</option>
                   </select>
                 </div>
                 <div className="mb4">
@@ -136,6 +130,7 @@ class FormGig extends React.Component {
                   <label htmlFor="comment" className="f6 b db mb2">Description <span className="normal black-60">(optional)</span></label>
                   <textarea
                     id="comment"
+                    onChange={e => props.setGigDescription(e.target.value)}
                     value={props.gig.description}
                     name="comment"
                     className="db border-box hover-black w-100 h3 ba b--black-20 pa2 br2 mb2"
@@ -187,7 +182,9 @@ class FormGig extends React.Component {
         <Panel
           instructions="Review and save your gig!"
           onPrevious={e => props.previous('step2')}
-          onFinish={props.submit(props.history, props.gig)}>
+          onFinish={
+            props.submit(props.history, props.gig)
+          }>
           <div className="cf ph3 bt">
             <div className="fl w-40 ph2 pv4 br">
               <div className="f4 fw1">
@@ -195,29 +192,27 @@ class FormGig extends React.Component {
                 <ul className="list pl0">
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Event</label><br />
-                    <span className="f5">Event Name Goes Here</span>
+                    <span className="f5">{props.gig.name}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">When</label><br />
-                    <span className="f5">Date, time go here</span>
+                    <span className="f5">{props.gig.date}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Event Type</label><br />
-                    <span className="f5">Funraiser</span>
+                    <span className="f5">{props.gig.eventType}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Venue</label><br />
-                    <span className="f5">Venue Name Goes Here</span><br />
-                    <span className="f6">Street Address</span><br />
-                    <span className="f6">City, ST</span>
+                    <span className="f5">{props.gig.venue}</span><br />
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Addmision</label><br />
                     <span className="f5">All Ages</span>
                   </li>
                   <li className="pb1 mb2">
-                    <label className="f6 fw6">Notes</label><br />
-                    <span className="f6">Hopped up on catnip. Lay on arms while youre using the keyboard wake up wander around the house.</span>
+                    <label className="f6 fw6">Description</label><br />
+                    <span className="f6">{props.gig.description}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Tags</label><br />
@@ -255,31 +250,29 @@ const mapActionsToProps = dispatch => {
     setGigName: (name) => dispatch({type:'SET_GIG_NAME', payload: name}),
     setGigVenue: (venue) => dispatch({type: 'SET_GIG_VENUE', payload: venue}),
     setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
-
-
-    setGigSongs: (songs) => {
-      dispatch({type: 'SET_GIG_SONGS', payload: songs})
-      console.log('added songs', songs)
-      },
-
+    setGigEventType: (type) => dispatch({type: 'SET_GIG_EVENT_TYPE', payload: type}),
+    setGigDescription: (text) => dispatch({type: 'SET_GIG_DESCRIPTION', payload: text}),
+    setGigSongs: (songs) => dispatch({type: 'SET_GIG_SONGS', payload: songs}),
 
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
     getSongsForForm: (songs) => dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}),
     toggleSong: (id) => e => dispatch({type: 'TOGGLE_SONG', payload: id }),
     submit: (history, gig) => (e) => {
+      e.preventDefault()
       if(gig._id) {
         putGig(gig)
-          .then(res => res.json()).then(res => {
+          .then(res => res.json())
+          .then(res => {
             dispatch({type: 'CLEAR_GIG_STATE'})
-            history.push('/')
+            history.push('/gigs')
           })
       } else {
         postGig(gig)
           .then(res => res.json())
           .then(res => {
             dispatch({type: 'CLEAR_GIG_STATE'})
-            history.push('/')
+            history.push('/gigs')
           }).catch(err => console.log(err.message))
 
       }

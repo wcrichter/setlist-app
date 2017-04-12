@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import { map } from 'ramda'
 import ListItemGigSetlist from '../components/list-item-gig-setlist'
 import ButtonBasic from '../components/button-basic'
+import createBrowserHistory from 'history/createBrowserHistory'
 
 class DetailsSong extends React.Component {
   componentDidMount() {
@@ -25,9 +26,9 @@ class DetailsSong extends React.Component {
                 <Link to="/project/songs/add">
                   <i className="fa fa-pencil fa-2x" aria-hidden="true"/>
                 </Link>
-                <Link to="/project/songs">
+                <div className="fr" onClick={e => props.history.goBack()}>
                   <i className="fa fa-close fa-2x ml4" aria-hidden="true"/>
-                </Link>
+                </div>
               </div>
             </div>
             <div className="cf ph3 bb">

@@ -115,7 +115,10 @@ const store = createStore(
           return merge(state, {venue: action.payload})
         case SET_GIG_DATE:
           return merge(state, {date: action.payload})
-
+        case 'SET_GIG_EVENT_TYPE':
+          return merge(state, {eventType: action.payload})
+        case 'SET_GIG_DESCRIPTION':
+          return merge(state, {description: action.payload})
 
         case 'SET_GIG_SONGS':
           console.log('songs in gig reducer', action.payload)

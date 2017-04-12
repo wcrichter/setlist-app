@@ -55,7 +55,9 @@ function addGig(gig, cb) {
   gig._id = prepID(newId)
   db.put(gig, function(err, addedGig) {
     if(err) return cb(err)
+    console.log('err adding gig', err)
     cb(null, addedGig)
+    console.log('gig added successfully', addedGig)
   })
 }
 
