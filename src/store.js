@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux'
-import {append,merge,map,prop,path} from 'ramda'
+import {append,merge,map} from 'ramda'
 
 const projects = function (projects=[
   {
@@ -115,17 +115,26 @@ const store = createStore(
           return merge(state, {venue: action.payload})
         case SET_GIG_DATE:
           return merge(state, {date: action.payload})
-        case 'GET_SONGS_FOR_FORM':
+
+
+        case 'SET_GIG_SONGS':
+          console.log('songs in gig reducer', action.payload)
           return merge(state, {songs: action.payload})
-        case 'TOGGLE_SONG':
+
+
+        case 'OLD_GET_SONGS_FOR_FORM':
+          return merge(state, {songs: action.payload})
+        case 'OLD_TOGGLE_SONG':
+          console.log("newChangedSongs", newChangedSongs)
           const newChangedSongs = map(song => {
             if (song._id === action.payload) {
               song.selected = !song.selected
             }
             return song
           },  state.songs)
-          console.log("newChangedSongs", newChangedSongs)
           return merge(state, {songs: newChangedSongs})
+
+
         default:
           return state
       }
@@ -148,19 +157,19 @@ const store = createStore(
     },
     gigSelectSongs: (state=[], action) => {
       switch(action.type) {
-        case 'OLD_GET_SONGS_FOR_FORM':
+        case 'GET_SONGS_FOR_FORM':
           return action.payload
-        case 'OLD_TOGGLE_SONG':
+        case 'TOGGLE_SONG':
           return map(song => {
             if (song._id === action.payload) {
               song.selected = !song.selected
             }
             return song
-          },  state)
+          }, state)
         default:
-          return state
+            return state
       }
-    },
+    }
   })
 )
 

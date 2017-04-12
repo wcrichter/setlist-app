@@ -50,6 +50,9 @@ function listGigs(cb) {
 }
 
 function addGig(gig, cb) {
+  gig.type = "gig"
+  let newId = "gig_" + gig.name.toLowerCase() + gig.venue.toLowerCase()
+  gig._id = prepID(newId)
   db.put(gig, function(err, addedGig) {
     if(err) return cb(err)
     cb(null, addedGig)
@@ -71,6 +74,10 @@ function deleteGig(id, cb) {
       cb(null, deletedGig)
     })
   })
+}
+
+function prepID(id) {
+  return id.replace(/ /g, "_")
 }
 
 const dal = {

@@ -1,25 +1,31 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { map } from 'ramda'
+import { map, path, pathOr } from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ListItemGigSetlist from '../components/list-item-gig-setlist'
-import ButtonBasic from '../components/button-basic'
 
 class DetailsGig extends React.Component{
   componentDidMount() {
     fetch(`http://localhost:8080/gigs/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(gig => this.props.dispatch({type: 'SET_GIG', payload: gig}))
+      .then(gig => console.log(gig))
   }
   render() {
     const props = this.props
+    if(!path(['gig','songs'], props)) {
+      return(
+        <div><h1>Loading</h1></div>
+      )
+    } else {
     return(
       <div>
         <section className="mw9 center pt4 ph4-ns">
           <div className="ba">
             <div className="cf ph3 bb">
               <div className="fl w-75 ph2 pv4">
+                {console.log('gig name -', props.gig.name)}
                 <span className="f3 fw1">{props.gig.name}</span>
               </div>
               <div className="fr tr w-25 ph2 pv4">
@@ -69,9 +75,8 @@ class DetailsGig extends React.Component{
                 <div className="f4 fw1">
                   Setlist
                   <ul className="list pl0">
-                    {/*
-                    {map(li => <ListItemGigSetlist {...li} />, props.gig.setlist)}
-                    */}
+                    {console.log('gig songs -', props.gig.songs)}
+                    {map(song => <ListItemGigSetlist key={song._id} {...song} />, path(['gig', 'songs'], props))}
                   </ul>
                 </div>
               </div>
@@ -80,6 +85,7 @@ class DetailsGig extends React.Component{
         </section>
       </div>
     )
+  }
   }
 }
 

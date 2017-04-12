@@ -1,20 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { equals, identity, map, filter, path } from 'ramda'
+import { equals, identity, map, filter, path, pathOr, length } from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ButtonBasic from './button-basic'
 import ButtonCTA from './button-cta'
 import Panel from './panel'
 import SelectorItemSong from './selector-item-song'
 
-const postGig = (gig) => fetch('http://localhost:8080/gigs', {
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  method: 'POST',
-  body: JSON.stringify(gig)
-})
+const postGig = (gig) => {
+    console.log("Here's the gig", gig)
+    fetch('http://localhost:8080/gigs', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(gig)
+  })
+}
 
 const getGig = (id) => fetch('http://localhost:8080/gigs/' + id)
 
@@ -22,7 +25,7 @@ const putGig = (gig) => fetch('http://localhost:8080/gigs/' + gig._id, {
   headers: {
     'Content-Type': 'application/json'
   },
-  method: 'POST',
+  method: 'PUT',
   body: JSON.stringify(gig)
 })
 
@@ -37,6 +40,7 @@ class FormGig extends React.Component {
 
   render() {
     const props = this.props
+    const filteredSelectedSongs = filter(song => song.selected, props.gigSelectSongs)
     if(!path(['gig'], props)) {
       return(
         <div><h1>Loading</h1></div>
@@ -47,7 +51,10 @@ class FormGig extends React.Component {
         {equals(props.panel, 'step1') &&
         <Panel
           instructions="Fill out some basic info about the gig."
-          onNext={e => props.next('step2')}>
+          onNext={e => {
+            console.log('Gig input so far', props.gig)
+            props.next('step2')}
+          }>
           <div className="cf ph3">
             <div className="fl w-100 ph2 pb4">
               <form className="black">
@@ -56,7 +63,6 @@ class FormGig extends React.Component {
                   <input
                     value={props.gig.name}
                     onChange={e => props.setGigName(e.target.value)}
-                    id="name"
                     className="input-reset ba b--black-20 pa2 mb2 db w-100"
                     type="text"
                     aria-describedby="name-desc" />
@@ -67,7 +73,6 @@ class FormGig extends React.Component {
                   <input
                     value={props.gig.venue}
                     onChange={e => props.setGigVenue(e.target.value)}
-                    id="name"
                     className="input-reset ba b--black-20 pa2 mb2 db w-100"
                     type="text"
                     aria-describedby="name-desc" />
@@ -156,20 +161,24 @@ class FormGig extends React.Component {
         <Panel
           instructions="Select song(s) to build your setlist."
           onPrevious={e => props.previous('step1')}
-          onNext={e => props.next('step3')}>
+          onNext={e => {
+            props.next('step3')
+            props.setGigSongs(filter(song => song.selected, props.gigSelectSongs))
+            }
+          }>
           <div className="mw9 center bb">
             <div className="cf ph2-ns">
               <div className="fl w-75 ph3 pb4">
-                <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected, props.gig.songs).length} of {props.gig.songs.length}</span>
+                <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected, props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
                 <button className="f6 bg-white ba b--black dim pointer pv1 black" type="submit">View Selected</button>
               </div>
             </div>
           </div>
           <div className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
             <ul className="list pl0 center ph2-ns">
-              {map(song => <SelectorItemSong bgColor={'gray'} selected={song.selected} key={song._id} {...song}
+              {map(song => <SelectorItemSong key={song._id} bgColor={'gray'} selected={song.selected} {...song}
                 onSelected={props.toggleSong(song._id)}
-                 />, props.gig.songs)}
+                 />, props.gigSelectSongs)}
             </ul>
           </div>
         </Panel>
@@ -178,11 +187,7 @@ class FormGig extends React.Component {
         <Panel
           instructions="Review and save your gig!"
           onPrevious={e => props.previous('step2')}
-          onFinish={e => {
-            props.submit(props.gig)
-            props.clearGigState()
-            props.reset()
-            props.history.push('/project/gigs')}}>
+          onFinish={props.submit(props.history, props.gig)}>
           <div className="cf ph3 bt">
             <div className="fl w-40 ph2 pv4 br">
               <div className="f4 fw1">
@@ -225,11 +230,11 @@ class FormGig extends React.Component {
               <div className="f4 fw1">
                 Setlist
                 <ul className="list pl0">
-                {map(song =>
-                  <li className="pb1 mb2 bb b--black-10">
+                  {map(song =>
+                  <li key={song.title} className="pb1 mb2 bb b--black-10">
                     <span className="f5">{song.title}</span><br />
                     <span className="f6">{song.artist}</span>
-                  </li> , filter(song => song.selected, props.gig.songs))}
+                  </li> , props.gig.songs )}
                 </ul>
               </div>
             </div>
@@ -250,22 +255,29 @@ const mapActionsToProps = dispatch => {
     setGigName: (name) => dispatch({type:'SET_GIG_NAME', payload: name}),
     setGigVenue: (venue) => dispatch({type: 'SET_GIG_VENUE', payload: venue}),
     setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
+
+
+    setGigSongs: (songs) => {
+      dispatch({type: 'SET_GIG_SONGS', payload: songs})
+      console.log('added songs', songs)
+      },
+
+
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
     getSongsForForm: (songs) => dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}),
     toggleSong: (id) => e => dispatch({type: 'TOGGLE_SONG', payload: id }),
     submit: (history, gig) => (e) => {
-      e.preventDefault()
       if(gig._id) {
         putGig(gig)
           .then(res => res.json()).then(res => {
             dispatch({type: 'CLEAR_GIG_STATE'})
             history.push('/')
           })
-
       } else {
         postGig(gig)
-          .then(res => res.json()).then(res => {
+          .then(res => res.json())
+          .then(res => {
             dispatch({type: 'CLEAR_GIG_STATE'})
             history.push('/')
           }).catch(err => console.log(err.message))

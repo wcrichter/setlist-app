@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { map, length, sortBy, prop } from 'ramda'
-import ButtonCTA from '../components/button-cta'
+import { map, length } from 'ramda'
 import ListItemGig from '../components/list-item-gig'
 
 class ListGigs extends React.Component{

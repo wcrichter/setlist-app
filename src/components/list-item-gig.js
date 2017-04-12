@@ -10,7 +10,7 @@ const ListItemGig = (props) => {
             <p className="ma0">{props.name}</p>
             <p className="ma0 pt2 f6">{props.venue}</p>
           </div>
-          <div className="fl w-25-ns tr">19 Songs</div>
+          <div className="fl w-25-ns tr">{props.songs.length} Song(s)</div>
         </li>
       </Link>
   )

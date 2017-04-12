@@ -83,16 +83,15 @@ const docs = [{
     "projectId": "project_fowlers_mustache_charleston",
     "lyrics": `We were born before the wind/Also younger than the sun/Ere the bonnie boat was won as we sailed into the mystic/Hark, now hear the sailors cry/Smell the sea and feel the sky/Let your soul and spirit fly into the mystic//And when that foghorn blows I will be coming home/And when that foghorn blows I want to hear it/I don't have to fear it/I want to rock your gypsy soul/Just like way back in the days of old/Then magnificently we will float into the mystic//And when that foghorn blows you know I will be coming home/And when that foghorn whistle blows I got to hear it/I don't have to fear it/I want to rock your gypsy soul/Just like way back in the days of old/And together we will float into the mystic//Come on girl//Too late to stop now`
   }, {
-    "_id": "gig_fowlers_mustache_arts_bar_and_grill_mount_pleasant_20131012",
+    "_id": "gig_fowlers_mustache_arts_bar_and_grill",
     "type": "gig",
     "projectId": "project_fowlers_mustache_charleston",
     "name": "Have-A-Heart Fundraiser",
-    "venueID": "venue_arts_bar_and_grill_mount_pleasant",
-    "startTime": "2013-10-12",
-    "endTime": "2013-10-12",
+    "venue": "Arts Bar and Grill",
+    "date": "20170412",
     "eventType": "Fundraiser",
     "tags": ["classic", "70's", "slow", "slow dance"],
-    "setlist": [
+    "songs": [
       {
         "_id": "song_van_morrison_into_the_mystic",
         "title": "Into The Mystic",
