@@ -9,9 +9,13 @@ const docs = [
     "_id": "project_fowlers_mustache_charleston",
     "type": "project",
     "projectName": "Fowler's Mustache",
+    "imageURL": "https://www.musicindustryhowto.com/wp-content/uploads/2012/07/How-To-Form-A-Band.jpg",
     "genres": ["Rock", "Alternative", "Jam-Band"],
-    "city": "Charleston",
-    "state": "SC",
+    "location": {
+      "city": "Charleston",
+      "state": "SC",
+    },
+    "dateFormed": "2009-08-01",
     "members": [
       "Chris Richter",
       "Matt Stanley",

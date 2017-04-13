@@ -7,14 +7,15 @@ import './index.css'
 
 class App extends Component {
   render() {
+    var currentProject = "Fowler's Mustache"
     return (
       <BrowserRouter>
         <div>
-          <NavMain />
+          <NavMain currentProject={currentProject}/>
           <main>
             <Switch>
               <Route exact path="/" component={ProjectsPage} />
-              <Route path="/project" component={ProjectPage} />
+              <Route path="/project" component={ProjectPage} currentProject={currentProject} />
             </Switch>
           </main>
         </div>

@@ -22,8 +22,8 @@ class DetailsSong extends React.Component {
     return (
       <div>
         <section className="mw9 center pt4 ph4-ns">
-          <div className="br3 ba bg-white">
-            <div className="cf ph3 bb">
+          <div className="br2 b--black-20 ba bg-white card-shadow">
+            <div className="cf ph3 bb b--black-20">
               <div className="fl w-75 ph2 pv4">
                 <span className="f3 fw1">{props.song.title}</span>
               </div>
@@ -36,7 +36,7 @@ class DetailsSong extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="cf ph3 bb">
+            <div className="cf ph3 bb b--black-20">
               <div className="ph2">
                 <div className="f4 fw1">
                   <ul className="list pl0 cf">

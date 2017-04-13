@@ -9,7 +9,7 @@ const PromptGigForm = () => {
         <div className="center tc f3 fw1 mt4 mb5">
           How would you like to build your gig?
         </div>
-        <a href="">
+        <Link to="/project/gigs/add-form-smart">
           <div className="pa4 mv3 center cf ba br3 w-80">
             <div className="dib fl w-10">
               <i className="fa fa-magic fa-3x" aria-hidden="true" />
@@ -19,7 +19,7 @@ const PromptGigForm = () => {
               <span className="f6 fw1">{`Enter gig details and automatically initialize a setlist based on information you've provided about your gig. Don't worry, you can still edit this selection.`}</span>
             </div>
           </div>
-        </a>
+        </Link>
         <Link to="/project/gigs/add-form">
           <div className="pa4 mv3 center cf ba br3 w-80">
             <div className="dib fl w-10">

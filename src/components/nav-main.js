@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const NavMain = (props) => {
   return (
-    <header className="mw9 center ph3-ns bb white bg-black-80">
+    <header className="mw9 center ph3-ns bb b--black-90 white bg-black-80">
       <div className="cf ph2-ns">
         <div className="fl w-third pa2">
           <Link to="/">
@@ -12,7 +12,7 @@ const NavMain = (props) => {
           </Link>
         </div>
         <div className="fl w-third pa2 center tc">
-          <p className="dib v-mid">{props.project.name}</p>
+          <p className="dib v-mid">{props.currentProject}</p>
         </div>
         <div className="fl w-third pa2 tr">
           <a href="">

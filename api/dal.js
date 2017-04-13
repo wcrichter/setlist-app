@@ -6,6 +6,28 @@ const db = new PouchDB(couch_base_uri + couch_dbname)
 const {map, uniq, prop, compose, omit, drop} = require('ramda')
 
 //////////////
+//// PROJECTS
+//////////////
+
+function getProject(projectId, cb) {
+  db.get(projectId, function(err, doc) {
+    if(err) return cb(err)
+    cb(null, doc)
+  })
+}
+
+function listProjects(cb) {
+  db.allDocs({
+      include_docs: true,
+      start_key: "project_",
+      end_key: "project_\uffff"
+  }, function(err, res) {
+    if(err) return cb(err)
+    cb(null, (map(obj => omit("type", obj.doc), res.rows)))
+  })
+}
+
+//////////////
 //// SONGS
 //////////////
 
@@ -83,6 +105,8 @@ function prepID(id) {
 }
 
 const dal = {
+  getProject: getProject,
+  listProjects: listProjects,
   getSong: getSong,
   listSongs: listSongs,
   getGig: getGig,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { map } from 'ramda'
+import { map, path } from 'ramda'
 
 class OverviewPage extends React.Component {
   componentDidMount() {
@@ -13,85 +13,92 @@ class OverviewPage extends React.Component {
   }
   render() {
     const props = this.props
-    return (
-      <div>
-        <section>
-          <article className="pa4 mt2 cf">
-            <div className="dib v-mid fl w-25">
-              <img src={props.project.imageURL} className="ba br-100 w-100" alt=""/>
-            </div>
-            <div className="dib v-mid fl w-75 w-50-ns pl4">
-              <h1 className="f3 f2-ns fw1 mb0">{props.project.name}</h1>
-              <h2 className="f4 f3-ns fw1 mb0 mt2">{props.project.city}</h2>
-              <h2 className="f6 f5-ns fw1 mb0">{map(genre => genre + ", ", props.project.genres)}</h2>
-            </div>
-            <div className="dib v-mid fl w-100 w-25-ns">
-              <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Edit Project</button>
-            </div>
-          </article>
-        </section>
-        <section>
-          <div className="mw9 center ph3-ns">
-            <div className="cf ph2-ns">
-              <div className="fl w-100 pa2">
-                <div className="bg-black-10 ba b--black-30 br2 pa3">
-                  <div className="mb3">Upcoming Gigs:</div>
-                  <div className="f6">{map(gig => <div className="cf"><span className="fl w-20">{gig.date}</span><span className="fl w-30">{gig.name}</span><span className="fl w-30">{gig.venue}</span></div>, props.gigs)}</div>
-                </div>
+
+    if(!path(['project'], props)) {
+      return(
+        <div><h1>Loading</h1></div>
+      )
+    } else {
+      return (
+        <div>
+          <section>
+            <article className="pa4 mt2 cf">
+              <div className="dib v-mid fl w-25">
+                <img src={props.project.imageURL} className="ba br-100 w-100" alt=""/>
               </div>
-              <div className="fl w-100 w-third-ns pa2">
-                <div className="bg-black-10 ba b--black-30 br2 pa3">
-                  <div className="mb3">Total Songs:</div>
-                  <div className="f1 fw1">{[props.gigSelectSongs.length]}</div>
-                </div>
+              <div className="dib v-mid fl w-75 w-50-ns pl4">
+                <h1 className="f3 f2-ns fw1 mb0">{props.project.projectName}</h1>
+                <h2 className="f4 f3-ns fw1 mb0 mt2">{props.project.city}</h2>
+                <h2 className="f6 f5-ns fw1 mb0">{map(genre => genre + ", ", props.project.genres)}</h2>
               </div>
-              <div className="fl w-100 w-third-ns pa2">
-                <div className="bg-black-10 ba b--black-30 br2 pa3">
-                  <div className="mb3">Total Gigs:</div>
-                  <div className="f1 fw1">{[props.gigs.length]}</div>
-                </div>
+              <div className="dib v-mid fl w-100 w-25-ns">
+                <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Edit Project</button>
               </div>
-              <div className="fl w-100 w-third-ns pa2">
-                <div className="bg-black-10 ba b--black-30 br2 pa3">
-                  <div className="mb3">Total Artists:</div>
-                  <div className="f1 fw1">12</div>
+            </article>
+          </section>
+          <section>
+            <div className="mw9 center ph3-ns">
+              <div className="cf ph2-ns">
+                <div className="fl w-100 pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Upcoming Gigs:</div>
+                    <div className="f6">{map(gig => <div key={gig._id} className="cf"><span className="fl w-20">{gig.date}</span><span className="fl w-30">{gig.name}</span><span className="fl w-30">{gig.venue}</span></div>, props.gigs)}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="fl w-50 pa2">
+                <div className="fl w-100 w-third-ns pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Total Songs:</div>
+                    <div className="f1 fw1">{[props.gigSelectSongs.length]}</div>
+                  </div>
+                </div>
+                <div className="fl w-100 w-third-ns pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Total Gigs:</div>
+                    <div className="f1 fw1">{[props.gigs.length]}</div>
+                  </div>
+                </div>
+                <div className="fl w-100 w-third-ns pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Total Artists:</div>
+                    <div className="f1 fw1">12</div>
+                  </div>
+                </div>
+                <div className="fl w-50 pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Highest Rated Songs:</div>
+                    <ol>
+                      <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                      <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                      <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                    </ol>
+                  </div>
+                </div>
+                <div className="fl w-50 pa2">
                 <div className="bg-black-10 ba b--black-30 br2 pa3">
                   <div className="mb3">Highest Rated Songs:</div>
-                  <ol>
-                    <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                    <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                    <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                  </ol>
+                    <ol>
+                      <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                      <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                      <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                    </ol>
+                  </div>
                 </div>
-              </div>
-              <div className="fl w-50 pa2">
-              <div className="bg-black-10 ba b--black-30 br2 pa3">
-                <div className="mb3">Highest Rated Songs:</div>
-                  <ol>
-                    <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                    <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                    <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                  </ol>
+                <div className="fl w-100 pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Gig Frequency:</div>
+                  </div>
                 </div>
-              </div>
-              <div className="fl w-100 pa2">
-                <div className="bg-black-10 ba b--black-30 br2 pa3">
-                  <div className="mb3">Gig Frequency:</div>
-                </div>
-              </div>
-              <div className="fl w-100 pa2">
-                <div className="bg-black-10 ba b--black-30 br2 pa3">
-                  <div className="mb3">Project Contributors:</div>
+                <div className="fl w-100 pa2">
+                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="mb3">Project Contributors:</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-    )
+          </section>
+        </div>
+      )
+    }
   }
 }
 

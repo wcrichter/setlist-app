@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {map, assoc} from 'ramda'
+import {map, assoc, path, sortBy, prop} from 'ramda'
 import ListItemProject from '../components/list-item-project'
 
 //add an onClick function that will change the state of the current project
@@ -18,22 +18,42 @@ const TestListItemThing = (props) => {
   )
 }
 
-const ProjectsPage = (props) => {
-  return (
-    <div>
-      <div className="mw9 center ph4 pt4">
-        {map(project => <TestListItemThing key={project.name} {...project} />, [addKey(props.project)])}
-      </div>
-      <section className="mw9 center ph4 pt5 pb1">
-        <h1 className="fw1 dib ma0">My Projects</h1>
-        <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
-      </section>
+class ProjectsPage extends React.Component {
+  componentDidMount() {
+    fetch('http://localhost:8080/projects')
+      .then(res => res.json())
+      .then(projects => this.props.dispatch({type: 'SET_PROJECTS', payload: projects}))
+  }
+  render() {
+    console.log('projects -',this.props.projects)
+    const props = this.props
+    const projectSort = sortBy(prop('name'))
+    if(!path(['projects'], props)) {
+      return(
+        <div><h1>Loading</h1></div>
+      )
+    } else {
+      return (
+        <div>
+          {/*
+          <div className="mw9 center ph4 pt4">
+            {map(project => <TestListItemThing key={project.name} {...project} />, [addKey(props.project)])}
+          </div>
+          */}
+          <section className="mw9 center ph4 pt5 pb1">
+            <h1 className="fw1 dib ma0">My Projects</h1>
+            <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
+          </section>
 
-      <div className="mw9 center ph4 pt4">
-        {map(project => <ListItemProject key={project.name} {...project} />, props.projects)}
-      </div>
-    </div>
-  )
+          <div className="mw9 center ph4 pt4">
+
+            {map(project => <ListItemProject key={project._id} {...project} />, projectSort(props.projects))}
+
+          </div>
+        </div>
+      )
+    }
+  }
 }
 
 const connector = connect(state => state)

@@ -10,6 +10,8 @@ const port = process.env.PORT || 8082
 const cors = require('cors')
 
 const {
+  getProject,
+  listProjects,
   getSong,
   listSongs,
   getGig,
@@ -22,6 +24,24 @@ const {
 app.use(cors({credentials: true}))
 
 app.use(bodyParser.json())
+
+//////////////
+//// SONGS
+//////////////
+
+app.get('/projects/:id', function(req, res, next) {
+  getProject(req.params.id, function(err, dalResponse) {
+    if(err) return next(new HTTPError(err.status, err.message, err))
+    res.status(200).send(dalResponse)
+  })
+})
+
+app.get('/projects', function(req, res, next) {
+  listProjects(function(err, projects) {
+    if(err) return next(new HTTPError(err.status, err.message, err))
+    res.status(200).send(projects)
+  })
+})
 
 //////////////
 //// SONGS

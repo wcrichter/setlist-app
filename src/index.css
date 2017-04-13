@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #fff;
+  background: #f8f8f8;
   /*
   background: #2C8DBE7;
   background: -webkit-linear-gradient(#C8DBE7, #FFE1BE);
@@ -10,4 +10,10 @@ body {
   background: -moz-linear-gradient(#C8DBE7, #FFE1BE);
   background: linear-gradient(#C8DBE7, #FFE1BE) fixed;
   */
+}
+
+.card-shadow {
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.15);
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.15);
 }

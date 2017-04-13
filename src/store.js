@@ -1,61 +1,21 @@
 import {createStore, combineReducers} from 'redux'
 import {append,merge,map} from 'ramda'
 
-const projects = function (projects=[
-  {
-    _id: "project_fowlers_mustache_charleston",
-    _type: "project",
-    name: "Fowler's Mustache",
-    city: "Charleston",
-    state: "SC",
-    genres: ["Rock", "Alternative", "Jam-Band"],
-    formed: "2009",
-    imageURL: "https://d31fr2pwly4c4s.cloudfront.net/f/7/5/908005_0_cabbage-the-shimmer-band-april_400.jpg",
-    songs: [{
-      _songId: "song_weezer_say_it_aint_so",
-      title: "Say It Aint So",
-      artist: "Weezer",
-    }],
-    gigs: []
-  },{
-    _id: "project_old_town_pickers_steamboat_springs",
-    _type: "project",
-    name: "Old Town Pickers",
-    city: "Steamboat Springs",
-    state: "CO",
-    genres: ["Folk", "Bluegrass"],
-    formed: "2005",
-    imageURL: "http://zuelrock.com/wp-content/uploads/2016/06/Zuel_199-400x400.jpg"
-  }
-], action) {
-  return projects
-}
-
-const project = function (project={
-  id: "",
-  name: "Fowler's Mustache",
-  city: "Charleston",
-  state: "SC",
-  genres: ["Rock", "Alternative", "Jam-Band"],
-  formed: "2009",
-  imageURL: "https://d31fr2pwly4c4s.cloudfront.net/f/7/5/908005_0_cabbage-the-shimmer-band-april_400.jpg",
-  songs: [],
-  setlists: []
-}, action) {
-  return project
-}
-
 const SET_PROJECT = 'SET_PROJECT'
+const SET_PROJECTS = 'SET_PROJECTS'
 
-const ADD_GIG = 'ADD_GIG'
 const PREVIOUS = 'PREVIOUS'
 const NEXT = 'NEXT'
+const RESET = 'RESET'
 
+const ADD_GIG = 'ADD_GIG'
+const SET_GIG = 'SET_GIG'
+const SET_GIGS = 'SET_GIGS'
 const SET_GIG_NAME = 'SET_GIG_NAME'
 const SET_GIG_VENUE = 'SET_GIG_VENUE'
 const SET_GIG_DATE = 'SET_GIG_DATE'
 const CLEAR_GIG_STATE = 'CLEAR_GIG_STATE'
-const RESET = 'RESET'
+
 
 const store = createStore(
   combineReducers({
@@ -71,26 +31,25 @@ const store = createStore(
           return state
       }
     },
-    projects: projects,
-    project: (state = {
-      id: "",
-      name: "",
-      city: "Charleston",
-      state: "SC",
-      genres: ["Rock", "Alternative", "Jam-Band"],
-      formed: "2009",
-      imageURL: "https://d31fr2pwly4c4s.cloudfront.net/f/7/5/908005_0_cabbage-the-shimmer-band-april_400.jpg"
-      }, action) => {
-        switch (action.type) {
-          case SET_PROJECT:
-            return merge(state, action.payload)
-          default:
-            return state
-        }
-      },
+    projects: (state = [], action) => {
+      switch (action.type) {
+        case SET_PROJECTS:
+          return action.payload
+        default:
+          return state
+      }
+    },
+    project: (state = {}, action) => {
+      switch (action.type) {
+        case SET_PROJECT:
+          return merge(state, action.payload)
+        default:
+          return state
+      }
+    },
     gigs: (state = [], action) => {
       switch (action.type) {
-        case 'SET_GIGS':
+        case SET_GIGS:
           return action.payload
         case ADD_GIG:
           return append(action.payload, state)
@@ -100,7 +59,7 @@ const store = createStore(
     },
     gig: (state = {}, action) => {
       switch (action.type) {
-        case 'SET_GIG':
+        case SET_GIG:
           return action.payload
         case CLEAR_GIG_STATE:
           return {

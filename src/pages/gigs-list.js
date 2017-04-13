@@ -19,7 +19,7 @@ class ListGigs extends React.Component{
     return (
       <div>
         <section className="mw9 center ph3-ns bb">
-          <div className="cf ph2-ns">
+          <div className="cf ph2-ns bg">
             <div className="fl w-50 ph2 pv4">
               <span className="f4 fw1">All Gigs ({[props.gigs.length]})</span>
             </div>

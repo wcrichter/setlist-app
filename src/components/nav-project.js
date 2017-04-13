@@ -1,9 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-const NavProject = () => {
+const NavProject = (props) => {
   return (
-    <section className="mw9 center bb b--black-20 bg-black-10">
+    <section className="mw9 center bb b--black-20 bg-black-50">
       <div className="cf">
         <div className="fl w-third tc f4">
           <Link to="/project" className="link no-underline">
@@ -25,4 +26,6 @@ const NavProject = () => {
   )
 }
 
-export default NavProject
+const connector = connect(state => state)
+
+export default connector(NavProject)

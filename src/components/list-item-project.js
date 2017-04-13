@@ -10,9 +10,9 @@ const ListItemProject = (props) => {
             <img src={props.imageURL} className="ba br-100 w-100" alt="" />
           </div>
           <div className="dib fl w-80 pl4">
-            <h1 className="f3 fw1 mt2 mb4">{props.name}</h1>
+            <h1 className="f3 fw1 mt2 mb4">{props.projectName}</h1>
             <p className="f5 fw1 mv0">Next Gig:</p>
-            <p className="f4 fw1 mt2">10/14/2017 - Fundraiser Gig - Arts Bar and Grill</p>
+            <p className="f4 fw1 mt2">Gig information goes here...</p>
           </div>
         </div>
       </Link>
