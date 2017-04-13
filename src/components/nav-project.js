@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const NavProject = () => {
   return (
-    <section className="mw9 center bb">
+    <section className="mw9 center bb b--black-20 bg-black-10">
       <div className="cf">
         <div className="fl w-third tc f4">
           <Link to="/project" className="link no-underline">

@@ -22,7 +22,7 @@ class DetailsSong extends React.Component {
     return (
       <div>
         <section className="mw9 center pt4 ph4-ns">
-          <div className="ba">
+          <div className="br3 ba bg-white">
             <div className="cf ph3 bb">
               <div className="fl w-75 ph2 pv4">
                 <span className="f3 fw1">{props.song.title}</span>

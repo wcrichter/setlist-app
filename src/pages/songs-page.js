@@ -20,7 +20,7 @@ class SongsPage extends React.Component{
     const artistSort = sortBy(prop('artist'))
     return (
         <div>
-          <section className="mw9 center ph3-ns bb">
+          <section className="mw9 center ph3-ns bb b--black-30">
             <div className="cf ph2-ns">
               <div className="fl w-50 ph2 pv4">
                 <span className="f4 fw1">All Songs ({[props.songs.length]})</span>
@@ -30,7 +30,7 @@ class SongsPage extends React.Component{
               </div>
             </div>
           </section>
-          <section className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
+          <section className="mw9 center pt2 ph3-ns bt bw2 b--black-05">
             <ul className="list pl0 center ph3-ns">
               {map(li => <ListItemSong key={li._id} {...li} />, artistSort(props.songs))}
 

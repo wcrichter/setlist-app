@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const NavMain = (props) => {
   return (
-    <header className="mw9 center ph3-ns bb">
+    <header className="mw9 center ph3-ns bb white bg-black-80">
       <div className="cf ph2-ns">
         <div className="fl w-third pa2">
           <Link to="/">
