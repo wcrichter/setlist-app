@@ -5,11 +5,11 @@ const ListItemSong = (props) => {
   return (
     <Link to={`/project/songs/${props._id}`}>
       <li className="ba br3 pa3 mb2 cf">
-        <div className="fl w-25-ns">{props.artist}</div>
+        <div className="fl w-40-ns">{props.artist}</div>
         <div className="fl w-50-ns">
           <p className="ma0">{props.title}</p>
         </div>
-        <div className="fl w-25-ns tr"><i className="fa fa-plus" aria-hidden="true"/></div>
+        <div className="fl w-10-ns tr"><i className="fa fa-file-text-o" aria-hidden="true"/></div>
       </li>
     </Link>
   )

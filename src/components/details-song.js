@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { map } from 'ramda'
+import { map, replace, path, prop } from 'ramda'
 import ListItemGigSetlist from '../components/list-item-gig-setlist'
 import ButtonBasic from '../components/button-basic'
 import createBrowserHistory from 'history/createBrowserHistory'
@@ -14,6 +14,11 @@ class DetailsSong extends React.Component {
   }
   render() {
     const props = this.props
+    if(!path(['song'], props)) {
+      return(
+        <div><h1>Loading</h1></div>
+      )
+    } else {
     return (
       <div>
         <section className="mw9 center pt4 ph4-ns">
@@ -32,21 +37,20 @@ class DetailsSong extends React.Component {
               </div>
             </div>
             <div className="cf ph3 bb">
-              <div className="ph2 pv3">
+              <div className="ph2">
                 <div className="f4 fw1">
-                  <span className="f4">Song Information</span>
-                  <ul className="list pl0">
-                    <li className="pb1 mb2">
-                      <label className="f6 fw6">When</label><br />
-                      <span className="f5">{props.gig.date}</span>
-                    </li>
-                    <li className="pb1 mb2">
+                  <ul className="list pl0 cf">
+                    <li className="mb2 fl w-30">
                       <label className="f6 fw6">Artist</label><br />
                       <span className="f5">{props.song.artist}</span>
                     </li>
-                    <li className="pb1 mb2">
-                      <label className="f6 fw6">Artist</label><br />
-                      <span className="f5">{props.song.artist}</span>
+                    <li className="mb2 fl w-30">
+                      <label className="f6 fw6">Album</label><br />
+                      <span className="f5">{props.song.album}</span>
+                    </li>
+                    <li className="mb2 fl w-20">
+                      <label className="f6 fw6">Year</label><br />
+                      <span className="f5">{props.song.year}</span>
                     </li>
                   </ul>
                 </div>
@@ -66,6 +70,7 @@ class DetailsSong extends React.Component {
         </section>
       </div>
     )
+  }
   }
 
 }

@@ -11,7 +11,7 @@ const Panel = (props) => {
         </div>
         <div className="fl w-25 ph2 pv4">
           <Link to="/project/gigs">
-            <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Cancel</button>
+            <button onClick={e => props.dispatch({type:'RESET'})} className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Cancel</button>
           </Link>
         </div>
       </header>
