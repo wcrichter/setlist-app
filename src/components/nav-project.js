@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 
 const NavProject = (props) => {
   return (
-    <section className="mw9 center bb b--black-20 bg-black-50">
+    <section className="mw9 center">
       <div className="cf">
-        <div className="fl w-third tc f4">
+        <div className="fl w-third tc f4 bg-black-05">
           <Link to="/project" className="link no-underline">
             <p className="dib v-mid">Overview</p>
           </Link>

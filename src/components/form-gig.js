@@ -107,8 +107,12 @@ class FormGig extends React.Component {
                 <div className="mb4">
                   <label htmlFor="name" className="f6 b db mb2">Event Type </label>
                   <select onChange={e => props.setGigEventType(e.target.value)}>
-                    <option value="option 1">Option 1</option>
-                    <option value="option 2">Option 2</option>
+                    <option value="bar">Bar</option>
+                    <option value="festival">Festival</option>
+                    <option value="fundraiser">Fundraiser</option>
+                    <option value="private">Private</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
                 <div className="mb4">

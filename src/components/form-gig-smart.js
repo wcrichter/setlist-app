@@ -9,12 +9,6 @@ import Panel from './panel'
 import SelectorItemSong from './selector-item-song'
 import DropdownList from 'react-widgets/lib/DropdownList'
 
-import 'react-widgets/dist/css/react-widgets.css'
-import DateTimePicker from 'react-widgets/lib/DateTimePicker'
-import moment from 'moment'
-import momentLocaliser from 'react-widgets/lib/localizers/moment'
-
-momentLocaliser(moment)
 
 const postGig = (gig) => {
     console.log("Here's the gig", gig)
@@ -43,7 +37,7 @@ class FormGigSmart extends React.Component {
   componentDidMount() {
 
     const selectLens = lensProp('selected')
-    const prefilteredSong = (song) => song.artist==="Warren Zevon" ? set(selectLens, true, song) : song
+    const prefilteredSong = (song) => song.artist==="Beatles" ? set(selectLens, true, song) : song
     const mappedFilteredSongs = (songs) => map(song => prefilteredSong(song), songs)
 
     fetch('http://localhost:8080/songs')
@@ -112,8 +106,12 @@ class FormGigSmart extends React.Component {
                 <div className="mb4">
                   <label htmlFor="name" className="f6 b db mb2">Event Type </label>
                   <select onChange={e => props.setGigEventType(e.target.value)}>
-                    <option value="option 1">Option 1</option>
-                    <option value="option 2">Option 2</option>
+                    <option value="bar">Bar</option>
+                    <option value="festival">Festival</option>
+                    <option value="fundraiser">Fundraiser</option>
+                    <option value="private">Private</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
                 <div className="mb4">

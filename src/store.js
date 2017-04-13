@@ -9,11 +9,17 @@ const NEXT = 'NEXT'
 const RESET = 'RESET'
 
 const ADD_GIG = 'ADD_GIG'
+
 const SET_GIG = 'SET_GIG'
 const SET_GIGS = 'SET_GIGS'
 const SET_GIG_NAME = 'SET_GIG_NAME'
 const SET_GIG_VENUE = 'SET_GIG_VENUE'
 const SET_GIG_DATE = 'SET_GIG_DATE'
+const SET_GIG_EVENT_TYPE = 'SET_GIG_EVENT_TYPE'
+const SET_GIG_DESCRIPTION = 'SET_GIG_DESCRIPTION'
+const SET_GIG_TAGS = 'SET_GIG_TAGS'
+const SET_GIG_SONGS = 'SET_GIG_SONGS'
+
 const CLEAR_GIG_STATE = 'CLEAR_GIG_STATE'
 
 
@@ -74,12 +80,14 @@ const store = createStore(
           return merge(state, {venue: action.payload})
         case SET_GIG_DATE:
           return merge(state, {date: action.payload})
-        case 'SET_GIG_EVENT_TYPE':
+        case SET_GIG_EVENT_TYPE:
           return merge(state, {eventType: action.payload})
-        case 'SET_GIG_DESCRIPTION':
+        case SET_GIG_DESCRIPTION:
+          return merge(state, {description: action.payload})
+        case SET_GIG_TAGS:
           return merge(state, {description: action.payload})
 
-        case 'SET_GIG_SONGS':
+        case SET_GIG_SONGS:
           console.log('songs in gig reducer', action.payload)
           return merge(state, {songs: action.payload})
 
