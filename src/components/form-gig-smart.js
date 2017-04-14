@@ -65,19 +65,17 @@ class FormGigSmart extends React.Component {
         <Panel
           instructions="Fill out some basic info about the gig."
           onNext={e => {
-            console.log('Gig input so far', props.gigSelectSongs)
             props.next('step2')
 
-
-            const checkInput = (song) => intersection(song.tags, props.gig.tags)
-
+            console.log('Gig input so far', props.gigSelectSongs)
             console.log('Song Tags -', map(song => song.tags, props.gigSelectSongs))
             console.log('Gig Tags -', props.gig.tags)
 
+            const checkInput = (song) => intersection(song.tags, props.gig.tags)
             const setTrue = (song) => assoc('selected', true, song)
             const setFalse = (song) => assoc('selected', false, song)
-
             const toggledSongs = map(song => length(checkInput(song)) > 0 ? setTrue(song) : setFalse(song), props.gigSelectSongs)
+
             props.preToggleSongs(toggledSongs)
             }
           }>

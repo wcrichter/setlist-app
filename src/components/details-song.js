@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { map, replace, path, prop } from 'ramda'
+import { map, replace, path, prop, split } from 'ramda'
 import ListItemGigSetlist from '../components/list-item-gig-setlist'
 import ButtonBasic from '../components/button-basic'
 import createBrowserHistory from 'history/createBrowserHistory'
+import SongLyrics from './details-song-lyrics'
 
 class DetailsSong extends React.Component {
   componentDidMount() {
@@ -59,9 +60,9 @@ class DetailsSong extends React.Component {
             <div className="ph3 pt2">
               <div className="ph2 pv3">
                 <div className="f4 fw1">
-                  Lyrics
+                  <label className="f6 fw6">Lyrics</label><br />
                   <ul className="list pl0">
-                    {props.song.lyrics}
+                    <SongLyrics />
                   </ul>
                 </div>
               </div>
