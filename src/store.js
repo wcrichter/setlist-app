@@ -85,7 +85,7 @@ const store = createStore(
         case SET_GIG_DESCRIPTION:
           return merge(state, {description: action.payload})
         case SET_GIG_TAGS:
-          return merge(state, {description: action.payload})
+          return merge(state, {tags: action.payload})
 
         case SET_GIG_SONGS:
           console.log('songs in gig reducer', action.payload)
@@ -129,6 +129,11 @@ const store = createStore(
       switch(action.type) {
         case 'GET_SONGS_FOR_FORM':
           return action.payload
+
+        case 'PRE_TOGGLE_SONGS':
+          //console.log('redux', action.payload)
+          return  action.payload
+
         case 'TOGGLE_SONG':
           return map(song => {
             if (song._id === action.payload) {

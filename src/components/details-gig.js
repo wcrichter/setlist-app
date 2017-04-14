@@ -22,8 +22,8 @@ class DetailsGig extends React.Component{
     return(
       <div>
         <section className="mw9 center pt4 ph4-ns">
-          <div className="ba">
-            <div className="cf ph3 bb">
+          <div className="br2 b--black-20 ba bg-white card-shadow">
+            <div className="cf ph3 bb b--black-20">
               <div className="fl w-75 ph2 pv4">
                 {console.log('gig name -', props.gig.name)}
                 <span className="f3 fw1">{props.gig.name}</span>
@@ -38,7 +38,7 @@ class DetailsGig extends React.Component{
               </div>
             </div>
             <div className="cf ph3">
-              <div className="fl w-30 pl2 pr4 pv4 br">
+              <div className="fl w-30 pl2 pr4 pv4 br b--black-20">
                 <div className="f4 fw1">
                   Gig Information
                   <ul className="list pl0">

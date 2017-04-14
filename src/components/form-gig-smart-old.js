@@ -1,16 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { equals, identity, map, filter, path, pathOr, length, set, lensProp, intersection, contains, assoc } from 'ramda'
+import { equals, identity, map, filter, path, pathOr, length, set, lensProp } from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ButtonBasic from './button-basic'
 import ButtonCTA from './button-cta'
 import Panel from './panel'
 import SelectorItemSong from './selector-item-song'
 import DropdownList from 'react-widgets/lib/DropdownList'
-import ConfirmSetlist from './form-gig-confirm-setlist'
 
-//const mapGigSongs = map(song => <li key={song.title} className="pb1 mb2 bb b--black-10"><span className="f5">{song.title}</span><br /><span className="f6">{song.artist}</span></li> , props.gig.songs )
 
 const postGig = (gig) => {
     console.log("Here's the gig", gig)
@@ -41,16 +39,14 @@ class FormGigSmart extends React.Component {
     const selectLens = lensProp('selected')
     const prefilteredSong = (song) => song.artist==="Beatles" ? set(selectLens, true, song) : song
     const mappedFilteredSongs = (songs) => map(song => prefilteredSong(song), songs)
-    const addSelectedProp = (song) => map()
 
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
-      .then(songs => this.props.getSongsForForm(songs))
+      .then(songs => this.props.getSongsForForm(mappedFilteredSongs(songs)))
   }
 
   render() {
     const props = this.props
-    const selectLens = lensProp('selected')
     const filteredSelectedSongs = filter(song => song.selected, props.gigSelectSongs)
     const eventTypes = ['Rehearsal', 'Bar', 'Private', 'Concert', 'Festival', 'Fundraiser', 'Other']
 
@@ -65,11 +61,8 @@ class FormGigSmart extends React.Component {
         <Panel
           instructions="Fill out some basic info about the gig."
           onNext={e => {
-            console.log('Gig input so far', props.gigSelectSongs)
-            props.next('step2')
-            const toggledSongs = map(song => assoc('selected', true, song), props.gigSelectSongs)
-            props.preToggleSongs(toggledSongs)
-            }
+            console.log('Gig input so far', props.gig)
+            props.next('step2')}
           }>
           <div className="cf ph3">
             <div className="fl w-100 ph2 pb4">
@@ -168,7 +161,6 @@ class FormGigSmart extends React.Component {
           onPrevious={e => props.previous('step1')}
           onNext={e => {
             props.next('step3')
-            console.log('songs in gig', props.gig.songs)
             props.setGigSongs(filter(song => song.selected, props.gigSelectSongs))
             }
           }>
@@ -182,11 +174,9 @@ class FormGigSmart extends React.Component {
           </div>
           <div className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
             <ul className="list pl0 center ph2-ns">
-
-                {map(song => <SelectorItemSong key={song._id} selected={song.selected} {...song}
-                  onSelected={props.toggleSong(song._id)}
-                   />, props.gigSelectSongs)}
-
+              {map(song => <SelectorItemSong key={song._id} selected={song.selected} {...song}
+                onSelected={props.toggleSong(song._id)}
+                 />, props.gigSelectSongs)}
             </ul>
           </div>
         </Panel>
@@ -238,7 +228,11 @@ class FormGigSmart extends React.Component {
               <div className="f4 fw1">
                 Setlist
                 <ul className="list pl0">
-                  <ConfirmSetlist />
+                  {map(song =>
+                  <li key={song.title} className="pb1 mb2 bb b--black-10">
+                    <span className="f5">{song.title}</span><br />
+                    <span className="f6">{song.artist}</span>
+                  </li> , props.gig.songs )}
                 </ul>
               </div>
             </div>
@@ -267,8 +261,6 @@ const mapActionsToProps = dispatch => {
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
     getSongsForForm: (songs) => dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}),
-
-    preToggleSongs: (songs) => dispatch({type: 'PRE_TOGGLE_SONGS', payload: songs}),
 
     toggleSong: (id) => e => dispatch({type: 'TOGGLE_SONG', payload: id }),
     submit: (history, gig) => (e) => {

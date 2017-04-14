@@ -17,7 +17,7 @@ var currentProject = (props) => {props.currentProject}
 const ProjectPage = (props) => {
   return (
     <div>
-      <NavProject currentProject={currentProject}/>
+      <NavProject />
       <Switch>
         <Route exact path="/project" component={OverviewPage} />
         <Route exact path="/project/gigs" component={ListGigs} />

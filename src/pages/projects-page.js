@@ -23,6 +23,9 @@ class ProjectsPage extends React.Component {
     fetch('http://localhost:8080/projects')
       .then(res => res.json())
       .then(projects => this.props.dispatch({type: 'SET_PROJECTS', payload: projects}))
+    fetch('http://localhost:8080/gigs')
+      .then(res => res.json())
+      .then(gigs => this.props.dispatch({type: 'SET_GIGS', payload: gigs}))
   }
   render() {
     console.log('projects -',this.props.projects)
@@ -40,12 +43,12 @@ class ProjectsPage extends React.Component {
             {map(project => <TestListItemThing key={project.name} {...project} />, [addKey(props.project)])}
           </div>
           */}
-          <section className="mw9 center ph4 pt5 pb1">
-            <h1 className="fw1 dib ma0">My Projects</h1>
+          <section className="mw9 center ph4 pv4 pb1 bb b--black-30 header-shadow">
+            <h1 className="fw1 f3 dib ma0">My Projects</h1>
             <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
           </section>
 
-          <div className="mw9 center ph4 pt4">
+          <div className="mw9 center ph4">
 
             {map(project => <ListItemProject key={project._id} {...project} />, projectSort(props.projects))}
 
