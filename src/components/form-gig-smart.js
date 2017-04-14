@@ -199,7 +199,7 @@ class FormGigSmart extends React.Component {
             props.submit(props.history, props.gig)
           }>
           <div className="cf ph3 bt">
-            <div className="fl w-40 ph2 pv4 br">
+            <div className="fl w-40 ph2 pv4">
               <div className="f4 fw1">
                 Gig Information
                 <ul className="list pl0">

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {path, map} from 'ramda'
+import ListItemGigSetlist from './list-item-gig-setlist'
 
 
 
@@ -14,7 +15,7 @@ class ConfirmSetlist extends React.Component {
     } else {
       return(
         <ul className="list pl0">
-          {map(song => <li className="bb b--black-20">{song.title}</li>, props.gig.songs)}
+          {map(song => <ListItemGigSetlist key={song._id} {...song} />, props.gig.songs)}
         </ul>
       )
     }
