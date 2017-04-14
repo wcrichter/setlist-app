@@ -145,6 +145,7 @@ class FormGig extends React.Component {
                   <label htmlFor="comment" className="f6 b db mb2">Tags <span className="normal black-60">(optional)</span></label>
                   <textarea
                     id="comment"
+                    onChange={e => props.setGigTags(e.target.value)}
                     value={props.gig.tags}
                     name="comment"
                     className="db border-box hover-black w-100 h2 ba b--black-20 pa2 br2 mb2"

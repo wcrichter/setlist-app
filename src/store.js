@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux'
-import {append,merge,map} from 'ramda'
+import {append,merge,map,split} from 'ramda'
 
 const SET_PROJECT = 'SET_PROJECT'
 const SET_PROJECTS = 'SET_PROJECTS'
@@ -72,7 +72,10 @@ const store = createStore(
             name: "",
             venue: "",
             date: "",
-            songs: []
+            eventType: "",
+            songs: [],
+            description: "",
+            tags: []
           }
         case SET_GIG_NAME:
           return merge(state, {name: action.payload})
@@ -85,7 +88,7 @@ const store = createStore(
         case SET_GIG_DESCRIPTION:
           return merge(state, {description: action.payload})
         case SET_GIG_TAGS:
-          return merge(state, {tags: action.payload})
+          return merge(state, {tags: split(',', action.payload)})
 
         case SET_GIG_SONGS:
           console.log('songs in gig reducer', action.payload)

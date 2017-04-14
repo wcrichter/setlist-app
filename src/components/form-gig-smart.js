@@ -67,7 +67,17 @@ class FormGigSmart extends React.Component {
           onNext={e => {
             console.log('Gig input so far', props.gigSelectSongs)
             props.next('step2')
-            const toggledSongs = map(song => assoc('selected', true, song), props.gigSelectSongs)
+
+
+            const checkInput = (song) => intersection(song.tags, props.gig.tags)
+
+            console.log('Song Tags -', map(song => song.tags, props.gigSelectSongs))
+            console.log('Gig Tags -', props.gig.tags)
+
+            const setTrue = (song) => assoc('selected', true, song)
+            const setFalse = (song) => assoc('selected', false, song)
+
+            const toggledSongs = map(song => length(checkInput(song)) > 0 ? setTrue(song) : setFalse(song), props.gigSelectSongs)
             props.preToggleSongs(toggledSongs)
             }
           }>
@@ -151,6 +161,7 @@ class FormGigSmart extends React.Component {
                   <label htmlFor="comment" className="f6 b db mb2">Tags <span className="normal black-60">(optional)</span></label>
                   <textarea
                     id="comment"
+                    onChange={e => props.setGigTags(e.target.value)}
                     value={props.gig.tags}
                     name="comment"
                     className="db border-box hover-black w-100 h2 ba b--black-20 pa2 br2 mb2"
@@ -262,7 +273,10 @@ const mapActionsToProps = dispatch => {
     setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
     setGigEventType: (type) => dispatch({type: 'SET_GIG_EVENT_TYPE', payload: type}),
     setGigDescription: (text) => dispatch({type: 'SET_GIG_DESCRIPTION', payload: text}),
-    setGigSongs: (songs) => dispatch({type: 'SET_GIG_SONGS', payload: songs}),
+
+    setGigTags: (text) => dispatch({type: 'SET_GIG_TAGS', payload: text}),
+
+    setGigSongs: (text) => dispatch({type: 'SET_GIG_SONGS', payload: text}),
 
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
