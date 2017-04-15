@@ -16,6 +16,7 @@ const SET_GIG_NAME = 'SET_GIG_NAME'
 const SET_GIG_VENUE = 'SET_GIG_VENUE'
 const SET_GIG_DATE = 'SET_GIG_DATE'
 const SET_GIG_EVENT_TYPE = 'SET_GIG_EVENT_TYPE'
+const SET_GIG_ADMISSION = 'SET_GIG_ADMISSION'
 const SET_GIG_DESCRIPTION = 'SET_GIG_DESCRIPTION'
 const SET_GIG_TAGS = 'SET_GIG_TAGS'
 const SET_GIG_SONGS = 'SET_GIG_SONGS'
@@ -74,6 +75,7 @@ const store = createStore(
             date: "",
             eventType: "",
             songs: [],
+            admission: "",
             description: "",
             tags: []
           }
@@ -85,6 +87,8 @@ const store = createStore(
           return merge(state, {date: action.payload})
         case SET_GIG_EVENT_TYPE:
           return merge(state, {eventType: action.payload})
+        case SET_GIG_ADMISSION:
+          return merge(state, {admission: action.payload})
         case SET_GIG_DESCRIPTION:
           return merge(state, {description: action.payload})
         case SET_GIG_TAGS:

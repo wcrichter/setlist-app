@@ -132,13 +132,10 @@ class FormGigSmart extends React.Component {
                 <div className="mb4">
                   <label htmlFor="name" className="f6 b db mb2">Admission <span className="normal black-60">(optional)</span></label>
                   <div className="cf mb2">
-                    <div className="fl mr2 pa2 ba tc br1 pointer" value="american">
+                    <div className={`fl mr1 pa2 ba tc br2 w-20 pointer ${equals(props.gig.admission, "all ages") && 'bg-black white b--black'}`} onClick={e => props.setGigAdmission('all ages')}>
                       <span className="dn db-ns">All Ages</span>
                     </div>
-                    <div className="fl mr2 pa2 ba tc br1 pointer" value="american">
-                      <span className="dn db-ns">18+</span>
-                    </div>
-                    <div className="fl mr2 pa2 ba tc br1 pointer" value="american">
+                    <div className={`fl mr1 pa2 ba tc br2 w-20 pointer ${equals(props.gig.admission, "21+") && 'bg-black white b--black'}`} onClick={e => props.setGigAdmission('21+')}>
                       <span className="dn db-ns">21+</span>
                     </div>
                   </div>
@@ -229,8 +226,8 @@ class FormGigSmart extends React.Component {
                     <span className="f5">{props.gig.venue}</span><br />
                   </li>
                   <li className="pb1 mb2">
-                    <label className="f6 fw6">Addmision</label><br />
-                    <span className="f5">All Ages</span>
+                    <label className="f6 fw6">Admission</label><br />
+                    <span className="f5">{props.gig.admission}</span>
                   </li>
                   <li className="pb1 mb2">
                     <label className="f6 fw6">Description</label><br />
@@ -271,7 +268,7 @@ const mapActionsToProps = dispatch => {
     setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
     setGigEventType: (type) => dispatch({type: 'SET_GIG_EVENT_TYPE', payload: type}),
     setGigDescription: (text) => dispatch({type: 'SET_GIG_DESCRIPTION', payload: text}),
-
+    setGigAdmission: (admission) => dispatch({type: 'SET_GIG_ADMISSION', payload: admission}),
     setGigTags: (text) => dispatch({type: 'SET_GIG_TAGS', payload: text}),
 
     setGigSongs: (text) => dispatch({type: 'SET_GIG_SONGS', payload: text}),
