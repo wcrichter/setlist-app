@@ -118,13 +118,10 @@ class FormGig extends React.Component {
                 <div className="mb4">
                   <label htmlFor="name" className="f6 b db mb2">Admission <span className="normal black-60">(optional)</span></label>
                   <div className="cf mb2">
-                    <div className="fl mr2 pa2 ba tc br1 pointer" value="american">
+                    <div className={`fl mr1 pa2 ba tc br2 w-20 pointer ${equals(props.gig.admission, "all ages") && 'bg-black white b--black'}`} onClick={e => props.setGigAdmission('all ages')}>
                       <span className="dn db-ns">All Ages</span>
                     </div>
-                    <div className="fl mr2 pa2 ba tc br1 pointer" value="american">
-                      <span className="dn db-ns">18+</span>
-                    </div>
-                    <div className="fl mr2 pa2 ba tc br1 pointer" value="american">
+                    <div className={`fl mr1 pa2 ba tc br2 w-20 pointer ${equals(props.gig.admission, "21+") && 'bg-black white b--black'}`} onClick={e => props.setGigAdmission('21+')}>
                       <span className="dn db-ns">21+</span>
                     </div>
                   </div>
@@ -256,6 +253,7 @@ const mapActionsToProps = dispatch => {
     setGigVenue: (venue) => dispatch({type: 'SET_GIG_VENUE', payload: venue}),
     setGigDate: (date) => dispatch({type: 'SET_GIG_DATE', payload: date}),
     setGigEventType: (type) => dispatch({type: 'SET_GIG_EVENT_TYPE', payload: type}),
+    setGigAdmission: (admission) => dispatch({type: 'SET_GIG_ADMISSION', payload: admission}),
     setGigDescription: (text) => dispatch({type: 'SET_GIG_DESCRIPTION', payload: text}),
     setGigSongs: (songs) => dispatch({type: 'SET_GIG_SONGS', payload: songs}),
 
