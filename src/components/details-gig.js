@@ -29,7 +29,7 @@ class DetailsGig extends React.Component{
                 <span className="f3 fw1">{props.gig.name}</span>
               </div>
               <div className="fr tr w-25 ph2 pv4">
-                <Link to="/project/gigs/add">
+                <Link to="/project/gigs/add-form">
                   <i className="fa fa-pencil fa-2x" aria-hidden="true"/>
                 </Link>
                 <Link to="/project/gigs">
@@ -64,7 +64,7 @@ class DetailsGig extends React.Component{
                     </li>
                     <li className="pb1 mb2">
                       <label className="f6 fw6">Tags</label><br />
-                      <span className="f6">family, outdoor, fun, dance</span>
+                      <span className="f6">{props.gig.tags}</span>
                     </li>
                   </ul>
                 </div>

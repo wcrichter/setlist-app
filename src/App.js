@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavMain currentProject={currentProject}/>
+          <NavMain currentProject={currentProject} />
           <main>
             <Switch>
               <Route exact path="/" component={ProjectsPage} />

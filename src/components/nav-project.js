@@ -6,7 +6,7 @@ import {equal} from 'ramda'
 const NavProject = (props) => {
   const routeClass = (route) => props.path === route ? `fl w-third tc f4 bg-back-05` : `fl w-third tc f4 bg-black-10`
   return (
-    <section className="mw9 center">
+    <section className="mw10 center">
       <div className="cf">
         <Link to="/project" className="link no-underline">
           <div className={routeClass('/project')}>

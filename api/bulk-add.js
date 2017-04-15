@@ -193,6 +193,19 @@ const docs = [
     "projectId": "project_fowlers_mustache_charleston",
     "lyrics": "An old man up in Ocracoke was dippin' his toes in his favorite book..."
   },{
+    "_id": "song_weezer_undone",
+    "type": "song",
+    "title": "Undone",
+    "artist": "Weezer",
+    "album": "The Blue Albume",
+    "year": "1994",
+    "songKey": "G",
+    "genres": ["Alternative", "Rock"],
+    "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+    "explicit": true,
+    "projectId": "project_fowlers_mustache_charleston",
+    "lyrics": `Hey bra, how we doin' man? / All right. /It's been a while man, life's so rad! /This band's my favorite man, don't ya love 'em? /Yeah. /Aw man, you want a beer? /All right. /Aw man, this is the best. I'm so glad we're all back together and stuff. /This is great, man. /Yeah. /Hey, did you know about the party after the show? /Yeah. /Aw man, it's gonna be the best, I'm so stoked! Take it easy bra'. //I'm me /Me be /Goddamn /I am /I can /Sing and /Hear me /Know me /If you want to destroy my sweater /Hold this thread as I walk away /Hey, what's up? /Not much. /Did you hear about the party? /Yeah. /Um, I think I'm gonna go but, um, my friends don't really wanna go. Could I get a ride? /Oh no /It go /It gone /Bye-bye /Who I /I think /I sink /And I die /If you want to destroy my sweater /Hold this thread as I walk away / Watch me unravel, I'll soon be naked /Lying on the floor (lying on the floor) /I've come undone / If you want to destroy my sweater /Hold this thread as I walk away (as I walk away) /Watch me unravel, I'll soon be naked /Lying on the floor (lying on the floor) /I've come undone / I don't want to destroy your tank-top /Let's be friends and just walk away /It's good to see you lying there in your Superman skivvies /Lying on the floor (lying on the floor) /I've come undone`
+  },{
     "_id": "gig_fowlers_mustache_arts_bar_and_grill",
     "type": "gig",
     "projectId": "project_fowlers_mustache_charleston",
