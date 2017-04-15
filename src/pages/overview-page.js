@@ -10,6 +10,7 @@ class OverviewPage extends React.Component {
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
       .then(songs => this.props.dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}))
+    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project'})  
   }
   render() {
     const props = this.props

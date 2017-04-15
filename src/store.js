@@ -26,6 +26,14 @@ const CLEAR_GIG_STATE = 'CLEAR_GIG_STATE'
 
 const store = createStore(
   combineReducers({
+    currentComponent: (state = '', action) => {
+      switch(action.type) {
+      case 'SET_CURRENT_COMPONENT':
+        return action.payload
+      default:
+        return state
+      }
+    },
     panel: (state = 'step1', action) => {
       switch(action.type) {
         case PREVIOUS:

@@ -13,6 +13,7 @@ class SongsPage extends React.Component{
         type: 'LOAD_GIGS',
         payload: songs
       }))
+    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/songs'})     
   }
 
   render() {

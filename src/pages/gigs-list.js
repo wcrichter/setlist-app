@@ -12,6 +12,7 @@ class ListGigs extends React.Component{
         type: 'SET_GIGS',
         payload: gigs
       }))
+    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/gigs'}) 
   }
   render() {
     const props = this.props
