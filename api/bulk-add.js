@@ -24,6 +24,23 @@ const docs = [
       "Nick Collins"
     ]
   },{
+    "_id": "project_yellow_submarine_charleston",
+    "type": "project",
+    "projectName": "Yellow Submarine",
+    "imageURL": "https://www.musicindustryhowto.com/wp-content/uploads/2012/07/How-To-Form-A-Band.jpg",
+    "genres": ["Classic", "Tribute"],
+    "location": {
+      "city": "Charleston",
+      "state": "SC",
+    },
+    "dateFormed": "2006-09-15",
+    "members": [
+      "Saul Garret",
+      "Allen Robinson",
+      "Martin Jones",
+      "Dan Elliot"
+    ]
+  },{
     "_id": "song_beatles_come_together",
     "type": "song",
     "title": "Come Together",
@@ -211,7 +228,7 @@ const docs = [
     "projectId": "project_fowlers_mustache_charleston",
     "name": "Have-A-Heart Fundraiser",
     "venue": "Arts Bar and Grill",
-    "date": "20170412",
+    "date": "2017-04-12",
     "eventType": "Fundraiser",
     "tags": ["classic", "70's", "slow", "slow dance"],
     "songs": [
@@ -234,6 +251,23 @@ const docs = [
           "comments": "Good sing-along!"
         }
       },
+    ],
+  },{
+    "_id": "gig_yellow_submarine_wild_wing_cafe",
+    "type": "gig",
+    "projectId": "project_yellow_submarine_charleston",
+    "name": "Battle of the Bands",
+    "venue": "Wild Wing Cafe",
+    "date": "2017-07-03",
+    "eventType": "Bar",
+    "tags": ["competition", "classic", "rock"],
+    "songs": [
+      {
+        "_id": "song_beatles_come_together",
+        "title": "Come Together",
+        "artist": "Beatles",
+        "tags": ["classic", "60s", "jam", "jam-band"],
+      }
     ],
   },
 

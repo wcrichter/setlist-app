@@ -29,8 +29,11 @@ class DetailsGig extends React.Component{
                 <span className="f3 fw1">{props.gig.name}</span>
               </div>
               <div className="fr tr w-25 ph2 pv4">
+                <Link to={`/project/gigs/${this.props.match.params.id}/review-form`}>
+                  <i className="fa fa-star fa-2x" aria-hidden="true"></i>
+                </Link>
                 <Link to="/project/gigs/add-form">
-                  <i className="fa fa-pencil fa-2x" aria-hidden="true"/>
+                  <i className="fa fa-pencil fa-2x ml4" aria-hidden="true"/>
                 </Link>
                 <Link to="/project/gigs">
                   <i className="fa fa-close fa-2x ml4" aria-hidden="true"/>
@@ -74,7 +77,7 @@ class DetailsGig extends React.Component{
                   Setlist
                   <ul className="list pl0">
                     {console.log('gig songs -', props.gig.songs)}
-                    {map(song => <ListItemGigSetlist key={song._id} {...song} />, path(['gig', 'songs'], props))}
+                    {map(song => <ListItemGigSetlist key={song._id} rating={song.rating} {...song} />, path(['gig', 'songs'], props))}
                   </ul>
                 </div>
               </div>
@@ -86,6 +89,7 @@ class DetailsGig extends React.Component{
   }
   }
 }
+
 
 const connector = connect(state => state)
 

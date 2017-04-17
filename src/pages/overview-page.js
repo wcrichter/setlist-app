@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { map, path } from 'ramda'
+import { map, path, join } from 'ramda'
 
 class OverviewPage extends React.Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ class OverviewPage extends React.Component {
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
       .then(songs => this.props.dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}))
-    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project'})  
+    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project'})
   }
   render() {
     const props = this.props
@@ -29,8 +29,8 @@ class OverviewPage extends React.Component {
               </div>
               <div className="dib v-mid fl w-75 w-50-ns pl4">
                 <h1 className="f3 f2-ns fw1 mb0">{props.project.projectName}</h1>
-                <h2 className="f4 f3-ns fw1 mb0 mt2">{props.project.city}</h2>
-                <h2 className="f6 f5-ns fw1 mb0">{map(genre => genre + ", ", props.project.genres)}</h2>
+                <h2 className="f4 f3-ns fw1 mb0 mt2">{props.project.location.city}, {props.project.location.state}</h2>
+                <h2 className="f6 f5-ns fw1 mb0">{join(', ', props.project.genres)}</h2>
               </div>
               <div className="dib v-mid fl w-100 w-25-ns">
                 <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Edit Project</button>

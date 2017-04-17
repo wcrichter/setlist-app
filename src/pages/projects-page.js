@@ -49,9 +49,7 @@ class ProjectsPage extends React.Component {
           </section>
 
           <div className="mw9 center ph4">
-
-            {map(project => <ListItemProject key={project._id} {...project} />, projectSort(props.projects))}
-
+            {map(project => <ListItemProject key={project._id} {...project} gigs={props.gigs}/>, projectSort(props.projects))}
           </div>
         </div>
       )

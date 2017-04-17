@@ -45,3 +45,33 @@ body {
   -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.05);
   box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.05);
 }
+
+/*Gig song rating - https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html*/
+.rating {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+}
+.rating-input {
+    float: right;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0 0 0 -16px;
+    opacity: 0;
+}
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background: url('../public/img/star-8-16.png');
+}
+.rating-star,
+.rating:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('../public/img/outline-star-16.png');
+}

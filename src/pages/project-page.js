@@ -9,6 +9,7 @@ import FormGig from '../components/form-gig.js'
 import PromptGigForm from '../components/prompt-gig-form.js'
 import DetailsGig from '../components/details-gig'
 import DetailsSong from '../components/details-song'
+import FormGigRating from '../components/form-gig-rating'
 
 import FormGigSmart from '../components/form-gig-smart.js'
 
@@ -24,6 +25,7 @@ const ProjectPage = (props) => {
         <Route exact path="/project/gigs/add" component={PromptGigForm} />
         <Route exact path="/project/gigs/add-form" component={FormGig} />
         <Route exact path="/project/gigs/add-form-smart" component={FormGigSmart} />
+        <Route exact path="/project/gigs/:id/review-form" component={FormGigRating} />
         <Route exact path="/project/gigs/:id" component={DetailsGig} />
         <Route exact path="/project/songs" component={SongsPage} />
         <Route exact path="/project/songs/:id" component={DetailsSong} />

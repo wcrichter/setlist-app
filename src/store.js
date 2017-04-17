@@ -106,19 +106,14 @@ const store = createStore(
           console.log('songs in gig reducer', action.payload)
           return merge(state, {songs: action.payload})
 
-
-        case 'OLD_GET_SONGS_FOR_FORM':
-          return merge(state, {songs: action.payload})
-        case 'OLD_TOGGLE_SONG':
-          console.log("newChangedSongs", newChangedSongs)
-          const newChangedSongs = map(song => {
-            if (song._id === action.payload) {
-              song.selected = !song.selected
+        case 'SET_SONG_RATING':
+          const newRatedSongs = map(song => {
+            if (song._id === action.payload.id) {
+              song.rating === action.payload.rating
             }
             return song
-          },  state.songs)
-          return merge(state, {songs: newChangedSongs})
-
+          }, state.songs)
+          return merge(state, {songs: newRatedSongs})
 
         default:
           return state
