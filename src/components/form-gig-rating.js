@@ -52,8 +52,10 @@ class FormGigRating extends React.Component{
                 <button onClick={e => {
                   props.dispatch({type: 'SET_GIG_SONGS', payload: props.gigRateSongs})
                   console.log('gigRateSongs:', props.gigRateSongs)
-                  putGig(props.gig)
                 }}>Submit</button>
+                <button onClick={e => {
+                  putGig(props.gig)
+                }}>Save</button>
               </div>
             </div>
           </section>
