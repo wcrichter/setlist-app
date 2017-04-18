@@ -9,7 +9,7 @@ import {path} from 'ramda'
 class ListItemGigSetlistReview extends React.Component{
   render() {
     const props = this.props
-    if(!path(['gig','songs'], props)) {
+    if(!path(['gigRateSongs'], props)) {
       return(
         <div><h1>Loading</h1></div>
       )
@@ -19,6 +19,15 @@ class ListItemGigSetlistReview extends React.Component{
         <div className="fl w-60">
           <span className="f5">{props.title}</span><br />
           <span className="f6">{props.artist}</span>
+        </div>
+        <div className="mb4">
+          <select onChange={(e) => props.dispatch({type: 'SET_SONG_RATING', payload: {songId: props._id, songRating: e.target.value} })}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
         <div className="fr tr mt2 w-40">
           <ReactStars

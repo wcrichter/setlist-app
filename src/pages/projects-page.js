@@ -43,12 +43,12 @@ class ProjectsPage extends React.Component {
             {map(project => <TestListItemThing key={project.name} {...project} />, [addKey(props.project)])}
           </div>
           */}
-          <section className="mw9 center ph4 pv4 pb1 bb b--black-30 header-shadow">
+          <section className="mw10 center ph4 pv4 pb1 bb b--black-30 header-shadow">
             <h1 className="fw1 f3 dib ma0">My Projects</h1>
             <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
           </section>
 
-          <div className="mw9 center ph4">
+          <div className="mw8 center ph4">
             {map(project => <ListItemProject key={project._id} {...project} gigs={props.gigs}/>, projectSort(props.projects))}
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { map, path, pathOr } from 'ramda'
+import { map, path, pathOr, join } from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ListItemGigSetlist from '../components/list-item-gig-setlist'
 
@@ -25,7 +25,6 @@ class DetailsGig extends React.Component{
           <div className="br2 b--black-20 ba bg-white card-shadow">
             <div className="cf ph3 bb b--black-20">
               <div className="fl w-75 ph2 pv4">
-                {console.log('gig name -', props.gig.name)}
                 <span className="f3 fw1">{props.gig.name}</span>
               </div>
               <div className="fr tr w-25 ph2 pv4">
@@ -67,7 +66,7 @@ class DetailsGig extends React.Component{
                     </li>
                     <li className="pb1 mb2">
                       <label className="f6 fw6">Tags</label><br />
-                      <span className="f6">{props.gig.tags}</span>
+                      <span className="f6">{join(', ', props.gig.tags)}</span>
                     </li>
                   </ul>
                 </div>
@@ -76,8 +75,7 @@ class DetailsGig extends React.Component{
                 <div className="f4 fw1">
                   Setlist
                   <ul className="list pl0">
-                    {console.log('gig songs -', props.gig.songs)}
-                    {map(song => <ListItemGigSetlist key={song._id} rating={song.rating} {...song} />, path(['gig', 'songs'], props))}
+                    {map(song => <ListItemGigSetlist key={song._id + song.rating} rating={song.rating} {...song} />, path(['gig', 'songs'], props))}
                   </ul>
                 </div>
               </div>
@@ -89,7 +87,6 @@ class DetailsGig extends React.Component{
   }
   }
 }
-
 
 const connector = connect(state => state)
 

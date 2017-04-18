@@ -27,7 +27,7 @@ const docs = [
     "_id": "project_yellow_submarine_charleston",
     "type": "project",
     "projectName": "Yellow Submarine",
-    "imageURL": "https://www.musicindustryhowto.com/wp-content/uploads/2012/07/How-To-Form-A-Band.jpg",
+    "imageURL": "https://upload.wikimedia.org/wikipedia/en/a/ac/TheBeatles-YellowSubmarinealbumcover.jpg",
     "genres": ["Classic", "Tribute"],
     "location": {
       "city": "Charleston",

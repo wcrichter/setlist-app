@@ -75,3 +75,10 @@ body {
     height: 16px;
     background: url('../public/img/outline-star-16.png');
 }
+
+#overview {
+  background-image: url('https://clients.wegottickets.com/i/redesign/crowd.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}

@@ -111,7 +111,7 @@ class FormGigSmart extends React.Component {
             props.setGigSongs(filter(song => song.selected, props.gigSelectSongs))
             }
           }>
-          <div className="mw9 center bb">
+          <div className="mw9 center bb b--black-20 header-shadow">
             <div className="cf ph2-ns">
               <div className="fl w-75 ph3 pb4">
                 <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected, props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
@@ -119,7 +119,7 @@ class FormGigSmart extends React.Component {
               </div>
             </div>
           </div>
-          <div className="mw9 center pt2 ph3-ns bt bw2 b--black-10">
+          <div className="mw9 center pt2 ph3-ns">
             <ul className="list pl0 center ph2-ns">
               {map(song => <SelectorItemSong key={song._id} selected={song.selected} {...song}
                 onSelected={props.toggleSong(song._id)}

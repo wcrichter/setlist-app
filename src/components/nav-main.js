@@ -8,15 +8,15 @@ const NavMain = (props) => {
       <div className="cf ph2-ns">
         <div className="fl w-third pa2">
           <Link to="/">
-          <p className="dib v-mid link"><i className="fa fa-chevron-left mr1" />Projects</p>
+          <p className="dib v-mid link white dim"><i className="fa fa-chevron-left mr1" />Projects</p>
           </Link>
         </div>
         <div className="fl w-third pa2 center tc">
-          <p className="dib v-mid">{props.currentProject}</p>
+          <p className="dib v-mid">{props.project.projectName}</p>
         </div>
         <div className="fl w-third pa2 tr">
           <a href="">
-            <p className="dib v-mid">Profile</p>
+            <p className="dib v-mid white dim">Profile</p>
           </a>
         </div>
       </div>

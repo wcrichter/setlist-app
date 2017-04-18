@@ -10,13 +10,18 @@ const putGig = (gig) => fetch('http://localhost:8080/gigs/' + gig._id, {
     'Content-Type': 'application/json'
   },
   method: 'PUT',
-  body: JSON.stringify(gig)
+  body: JSON.stringify(gig, null, 2)
 })
 
 class FormGigRating extends React.Component{
+  componentDidMount() {
+    fetch(`http://localhost:8080/gigs/${this.props.gig._id}`)
+      .then(res => res.json())
+      .then(gig => this.props.dispatch({type: 'GET_SONGS_TO_RATE', payload: gig.songs}))
+  }
   render() {
     const props = this.props
-    if(!path(['gig','songs'], props)) {
+    if(!path(['gigRateSongs'], props)) {
       return(
         <div><h1>Loading</h1></div>
       )
@@ -39,13 +44,16 @@ class FormGigRating extends React.Component{
                 <div className="f4 fw1 ph2">
                   <span className="f3 fw1">How was the gig?</span>
                   <ul className="list pl0">
-                    {console.log('gig songs -', props.gig.songs)}
-                    {map(song => <ListItemGigSetlistReview key={song._id} rating={song.rating} {...song} />, path(['gig', 'songs'], props))}
+                    {map(song => <ListItemGigSetlistReview key={song._id} rating={song.rating} {...song} />, path(['gigRateSongs'], props))}
                   </ul>
                 </div>
               </div>
               <div>
-
+                <button onClick={e => {
+                  props.dispatch({type: 'SET_GIG_SONGS', payload: props.gigRateSongs})
+                  console.log('gigRateSongs:', props.gigRateSongs)
+                  putGig(props.gig)
+                }}>Submit</button>
               </div>
             </div>
           </section>

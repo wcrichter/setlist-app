@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux'
-import {append,merge,map,split} from 'ramda'
+import {append,merge,map,split,set,lensProp,find,findIndex,propEq,update,lensPath,omit,compose} from 'ramda'
 
 const SET_PROJECT = 'SET_PROJECT'
 const SET_PROJECTS = 'SET_PROJECTS'
@@ -101,19 +101,21 @@ const store = createStore(
           return merge(state, {description: action.payload})
         case SET_GIG_TAGS:
           return merge(state, {tags: split(',', action.payload)})
-
         case SET_GIG_SONGS:
           console.log('songs in gig reducer', action.payload)
           return merge(state, {songs: action.payload})
 
-        case 'SET_SONG_RATING':
-          const newRatedSongs = map(song => {
-            if (song._id === action.payload.id) {
-              song.rating === action.payload.rating
-            }
-            return song
-          }, state.songs)
-          return merge(state, {songs: newRatedSongs})
+        // case 'SET_SONG_RATING':
+        //   console.log('set song rating', action.payload)
+        //
+        //   const results = merge(find(song => song._id === action.payload.songId, state.songs), {rating: action.payload.songRating})
+        //   console.log('results:', results)
+        //   const resultIndex = findIndex(propEq('._id', action.payload.songId))(state.songs)
+        //   console.log('resultIndex:', resultIndex)
+        //   const updatedSongs = update(resultIndex, results, state.songs)
+        //   console.log('updatedSongs:', updatedSongs)
+        //   return set(lensPath(['songs']), updatedSongs, state)
+
 
         default:
           return state
@@ -154,7 +156,30 @@ const store = createStore(
         default:
             return state
       }
+    },
+    gigRateSongs: (state=[], action) => {
+      switch(action.type) {
+        case 'GET_SONGS_TO_RATE':
+          console.log('grabbed songs to rate', action.payload)
+          return action.payload
+
+        case 'SET_SONG_RATING':
+          console.log('action payload', action.payload)
+          const newRatedSongs = map(song => {
+            if (song._id === action.payload.songId) {
+              console.log('song:', song)
+              return set(lensProp('rating'), action.payload.songRating, song)
+            }
+            return song
+          }, state)
+          console.log('newRatedSongs', newRatedSongs)
+          return newRatedSongs
+
+      default:
+        return state
+      }
     }
+
   })
 )
 

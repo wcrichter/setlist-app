@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 
 const Panel = (props) => {
   return (
-    <div className="ba">
-      <header className="cf ph3 bb">
+    <div className="br2 b--black-20 ba bg-white card-shadow">
+      <header className="cf ph3 bb b--black-20">
         <div className="fl w-75 ph2 pv4">
           <span className="f3 fw1">New Event</span>
         </div>
@@ -23,7 +23,7 @@ const Panel = (props) => {
         </div>
       </div>
       {props.children}
-      <footer className="center tc pv3 bt">
+      <footer className="center tc pv3 bt b--black-20">
         {props.onPrevious &&
         <button className="f6 mh1 bg-white ba b--black dim pointer black"
           type="submit"

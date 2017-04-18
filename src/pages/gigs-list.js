@@ -12,19 +12,19 @@ class ListGigs extends React.Component{
         type: 'SET_GIGS',
         payload: gigs
       }))
-    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/gigs'}) 
+    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/gigs'})
   }
   render() {
     const props = this.props
     const gigSort = sort(descend(prop('date')))
     return (
       <div>
-        <section className="mw9 center ph3-ns bb b--black-30 header-shadow">
-          <div className="cf ph2-ns bg">
-            <div className="fl w-50 ph2 pv4">
+        <section className="mw10 center ph3 bb b--black-30 header-shadow">
+          <div className="mw8 center ph3-ns cf">
+            <div className="fl w-50 pv4">
               <span className="f4 fw1">All Gigs ({[props.gigs.length]})</span>
             </div>
-            <div className="fl w-50 ph2 pv4">
+            <div className="fl w-50 pv4">
               <Link to="/project/gigs/add">
                 <button
                   className="f6 fr bg-white ba b--black dim pointer pv1 black"
@@ -34,8 +34,8 @@ class ListGigs extends React.Component{
             </div>
           </div>
         </section>
-        <section className="mw9 center pt2 ph3-ns">
-          <ul className="list pl0 center ph3-ns">
+        <section className="mw8 center pt2 ph3">
+          <ul className="list pl0 center">
             {map(li => <ListItemGig key={li.name}{...li} />, gigSort(props.gigs))}
           </ul>
         </section>
