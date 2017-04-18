@@ -22,7 +22,7 @@ class ListGigs extends React.Component{
         <section className="mw10 center ph3 bb b--black-30 header-shadow">
           <div className="mw8 center ph3-ns cf">
             <div className="fl w-50 pv4">
-              <span className="f4 fw1">All Gigs ({[props.gigs.length]})</span>
+              <span className="f4">All Gigs ({[props.gigs.length]})</span>
             </div>
             <div className="fl w-50 pv4">
               <Link to="/project/gigs/add">

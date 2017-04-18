@@ -7,35 +7,26 @@ import {connect} from 'react-redux'
 const ListItemGigSetlist = (props) => {
   return (
     <li className="cf pb1 mb2 bb b--black-10">
-      <div className="fl w-60">
+      <div className="fl w-70">
         <span className="f5">{props.title}</span><br />
         <span className="f6">{props.artist}</span>
       </div>
-      <div className="fr tr mt2 w-40">
-
-
-        <div className="mb4">
-          <select onChange={(e) => props.dispatch({type: 'SET_SONG_RATING', payload: {songId: props._id, songRating: e.target.value} })}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+      <div className="dib tr mt2 w-30">
+        <div className="fl">
+          <ReactStars
+            value={props.rating}
+            count={5}
+            onChange={null}
+            size={16}
+            color2={'#ffd700'}
+            edit={false}
+          />
         </div>
-
-
-        <ReactStars
-          value={props.rating}
-          count={5}
-          onChange={null}
-          size={24}
-          color2={'#ffd700'}
-          edit={false}
-        />
+        <div className="dib tr">
         <Link to={`/project/songs/${props._id}`}>
           <i className="fa fa-file-text-o" aria-hidden="true" />
         </Link>
+        </div>
       </div>
     </li>
   )

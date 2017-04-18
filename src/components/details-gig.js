@@ -25,7 +25,7 @@ class DetailsGig extends React.Component{
           <div className="br2 b--black-20 ba bg-white card-shadow">
             <div className="cf ph3 bb b--black-20">
               <div className="fl w-75 ph2 pv4">
-                <span className="f3 fw1">{props.gig.name}</span>
+                <span className="f3">{props.gig.name}</span>
               </div>
               <div className="fr tr w-25 ph2 pv4">
                 <Link to={`/project/gigs/${this.props.match.params.id}/review-form`}>
@@ -41,38 +41,38 @@ class DetailsGig extends React.Component{
             </div>
             <div className="cf ph3">
               <div className="fl w-30 pl2 pr4 pv4 br b--black-20">
-                <div className="f4 fw1">
+                <div className="f4">
                   Gig Information
                   <ul className="list pl0">
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">When</label><br />
+                      <label className="f6">When</label><br />
                       <span className="f5">{props.gig.date}</span>
                     </li>
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">Event Type</label><br />
+                      <label className="f6">Event Type</label><br />
                       <span className="f5">{props.gig.eventType}</span>
                     </li>
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">Venue</label><br />
+                      <label className="f6">Venue</label><br />
                       <span className="f5">{props.gig.venue}</span><br />
                     </li>
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">Addmision</label><br />
+                      <label className="f6">Addmision</label><br />
                       <span className="f5">{props.gig.admission}</span>
                     </li>
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">Description</label><br />
+                      <label className="f6">Description</label><br />
                       <span className="f6">{props.gig.description}</span>
                     </li>
                     <li className="pb1 mb2">
-                      <label className="f6 fw6">Tags</label><br />
+                      <label className="f6">Tags</label><br />
                       <span className="f6">{join(', ', props.gig.tags)}</span>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="fl w-70 pl4 pr3 pv4">
-                <div className="f4 fw1">
+                <div className="f4">
                   Setlist
                   <ul className="list pl0">
                     {map(song => <ListItemGigSetlist key={song._id + song.rating} rating={song.rating} {...song} />, path(['gig', 'songs'], props))}

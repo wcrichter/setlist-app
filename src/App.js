@@ -15,9 +15,9 @@ class App extends Component {
           <NavMain />
           <main className="full-height">
             <Switch>
-              <Route exact path="/" component={ProjectsPage} />
+              <Route exact path="/projects" component={ProjectsPage} />
               <Route path="/project" component={ProjectPage} currentProject={currentProject} />
-              <Route path="/splash" component={Splash} />
+              <Route path="/" component={Splash} />
             </Switch>
           </main>
         </div>

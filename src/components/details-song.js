@@ -26,7 +26,7 @@ class DetailsSong extends React.Component {
           <div className="br2 b--black-20 ba bg-white card-shadow">
             <div className="cf ph3 bb b--black-20">
               <div className="fl w-75 ph2 pv4">
-                <span className="f3 fw1">{props.song.title}</span>
+                <span className="f3">{props.song.title}</span>
               </div>
               <div className="fr tr w-25 ph2 pv4">
                 <Link to="/project/songs/add">
@@ -39,18 +39,18 @@ class DetailsSong extends React.Component {
             </div>
             <div className="cf ph3 bb b--black-20">
               <div className="ph2">
-                <div className="f4 fw1">
+                <div className="f4">
                   <ul className="list pl0 cf">
                     <li className="mb2 fl w-30">
-                      <label className="f6 fw6">Artist</label><br />
+                      <label className="f6">Artist</label><br />
                       <span className="f5">{props.song.artist}</span>
                     </li>
                     <li className="mb2 fl w-30">
-                      <label className="f6 fw6">Album</label><br />
+                      <label className="f6">Album</label><br />
                       <span className="f5">{props.song.album}</span>
                     </li>
                     <li className="mb2 fl w-20">
-                      <label className="f6 fw6">Year</label><br />
+                      <label className="f6">Year</label><br />
                       <span className="f5">{props.song.year}</span>
                     </li>
                   </ul>
@@ -59,8 +59,8 @@ class DetailsSong extends React.Component {
             </div>
             <div className="ph3 pt2">
               <div className="ph2 pv3">
-                <div className="f4 fw1">
-                  <label className="f6 fw6">Lyrics</label><br />
+                <div className="f4">
+                  <label className="f6">Lyrics</label><br />
                   <ul className="list pl0">
                     <SongLyrics />
                   </ul>

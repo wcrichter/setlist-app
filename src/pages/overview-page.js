@@ -2,6 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose, map, filter, path, join } from 'ramda'
 
+
+// backgroundImage: 'url(' + props.project.imageURL + ')',
+
+
+
 class OverviewPage extends React.Component {
   componentDidMount() {
     fetch('http://localhost:8080/gigs')
@@ -14,6 +19,15 @@ class OverviewPage extends React.Component {
   }
   render() {
     const props = this.props
+    const bgImage = {
+      background: `-moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('http://www.skrenta.com/images/stackoverflow.jpg') no-repeat`,
+      background: `-webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(59%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65))), url('http://www.skrenta.com/images/stackoverflow.jpg') no-repeat`,
+      background: `-webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('http://www.skrenta.com/images/stackoverflow.jpg') no-repeat`,
+      background: `-o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('http://www.skrenta.com/images/stackoverflow.jpg') no-repeat`,
+      background: `-ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('http://www.skrenta.com/images/stackoverflow.jpg') no-repeat`,
+      background: `linear-gradient(to bottom, rgb(248, 248, 248) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(0, 0, 0, 0.50) 100%), url('${props.project.imageURL}') no-repeat`,
+      backgroundSize: 'cover',
+    }
 
     if(!path(['project'], props)) {
       return(
@@ -21,7 +35,7 @@ class OverviewPage extends React.Component {
       )
     } else {
       return (
-        <div id="overview">
+        <div id="overview" style={bgImage}>
           <div className="mw8 center">
             <section>
               <article className="pa4 mt2 cf">
@@ -29,9 +43,9 @@ class OverviewPage extends React.Component {
                   <img src={props.project.imageURL} className="ba br-100 w-100" alt=""/>
                 </div>
                 <div className="dib v-mid fl w-75 w-50-ns pl4">
-                  <h1 className="f3 f2-ns fw1 mb0">{props.project.projectName}</h1>
-                  <h2 className="f4 f3-ns fw1 mb0 mt2">{props.project.location.city}, {props.project.location.state}</h2>
-                  <h2 className="f6 f5-ns fw1 mb0">{join(', ', props.project.genres)}</h2>
+                  <h1 className="f3 f2-ns fw3 mb0">{props.project.projectName}</h1>
+                  <h2 className="f4 f3-ns fw3 mb0 mt2">{props.project.location.city}, {props.project.location.state}</h2>
+                  <h2 className="f6 f5-ns fw3 mb0">{join(', ', props.project.genres)}</h2>
                 </div>
                 <div className="dib v-mid fl w-100 w-25-ns">
                   <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Edit Project</button>
@@ -46,7 +60,7 @@ class OverviewPage extends React.Component {
                       <div className="mb2 pb2 bb b--black-10">
                         <label className="f6 fw6">Upcoming Gigs:</label><br />
                       </div>
-                      <div className="fw1 pt2">
+                      <div className="pt2">
                         {compose(
                           map(gig => <div key={gig._id} className="cf"><span className="fl w-20">{gig.date}</span><span className="fl w-40">{gig.name}</span><span className="fl w-40">{gig.venue}</span></div>),
                           filter(gig => gig.projectId === props.project._id ? gig : null)
@@ -55,25 +69,25 @@ class OverviewPage extends React.Component {
                     </div>
                   </div>
                   <div className="fl w-100 w-third-ns pa2">
-                    <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3">Total Songs:</div>
-                      <div className="f1 fw1">{[props.gigSelectSongs.length]}</div>
+                      <div className="f1">{[props.gigSelectSongs.length]}</div>
                     </div>
                   </div>
                   <div className="fl w-100 w-third-ns pa2">
-                    <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3">Total Gigs:</div>
-                      <div className="f1 fw1">{[props.gigs.length]}</div>
+                      <div className="f1">{[props.gigs.length]}</div>
                     </div>
                   </div>
                   <div className="fl w-100 w-third-ns pa2">
-                    <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3">Total Artists:</div>
-                      <div className="f1 fw1">12</div>
+                      <div className="f1">12</div>
                     </div>
                   </div>
                   <div className="fl w-50 pa2">
-                    <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3">Highest Rated Songs:</div>
                       <ol>
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
@@ -83,7 +97,7 @@ class OverviewPage extends React.Component {
                     </div>
                   </div>
                   <div className="fl w-50 pa2">
-                  <div className="bg-black-10 ba b--black-30 br2 pa3">
+                  <div className="bg-white card-shadow br2 pa3">
                     <div className="mb3">Highest Rated Songs:</div>
                       <ol>
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
@@ -93,12 +107,12 @@ class OverviewPage extends React.Component {
                     </div>
                   </div>
                   <div className="fl w-100 pa2">
-                    <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3">Gig Frequency:</div>
                     </div>
                   </div>
                   <div className="fl w-100 pa2">
-                    <div className="bg-black-10 ba b--black-30 br2 pa3">
+                    <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3">Project Contributors:</div>
                     </div>
                   </div>
