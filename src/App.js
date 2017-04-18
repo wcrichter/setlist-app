@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import NavMain from './components/nav-main'
 import ProjectPage from './pages/project-page'
 import ProjectsPage from './pages/projects-page'
+import Splash from './pages/splash'
 import './index.css'
 
 class App extends Component {
@@ -12,10 +13,11 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <NavMain />
-          <main>
+          <main className="full-height">
             <Switch>
               <Route exact path="/" component={ProjectsPage} />
               <Route path="/project" component={ProjectPage} currentProject={currentProject} />
+              <Route path="/splash" component={Splash} />
             </Switch>
           </main>
         </div>

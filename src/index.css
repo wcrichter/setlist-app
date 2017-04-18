@@ -1,19 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
 
+html {
+  height: 100% ;
+}
+
 body {
+  min-height: 100%;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background: #f8f8f8;
   /*
   background: #2C8DBE7;
-  background: -webkit-linear-gradient(#C8DBE7, #FFE1BE);
-  background: -o-linear-gradient(#C8DBE7, #FFE1BE);
-  background: -moz-linear-gradient(#C8DBE7, #FFE1BE);
-  background: linear-gradient(#C8DBE7, #FFE1BE) fixed;
+  background: -webkit-linear-gradient(#f8f8f8, white);
+  background: -o-linear-gradient(#f8f8f8, white);
+  background: -moz-linear-gradient(#f8f8f8, white);
+  background: linear-gradient(#f8f8f8, red);
   */
 }
 
+#root > [data-reactroot] { position: absolute; width: 100% !important; height: 100% !important; }
+.full-height {height:100%}
 .fixed {
   position: absolute fixed;
 }
@@ -80,5 +87,13 @@ body {
   background-image: url('https://clients.wegottickets.com/i/redesign/crowd.png');
   background-repeat: no-repeat;
   background-position: bottom;
+  background-size: cover;
+}
+
+#splash {
+  height: 100%;
+  background-image: url('https://cdn.shutterstock.com/shutterstock/videos/7315120/thumb/9.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
