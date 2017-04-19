@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { map, filter, length, sort, sortBy, prop, lensPath, path, descend } from 'ramda'
 import ListItemGig from '../components/list-item-gig'
+import ButtonBasic from '../components/button-basic'
 
 class ListGigs extends React.Component{
   componentDidMount() {
@@ -25,11 +26,13 @@ class ListGigs extends React.Component{
               <span className="f4">All Gigs ({[props.gigs.length]})</span>
             </div>
             <div className="fl w-50 pv4">
-              <Link to="/project/gigs/add">
-                <button
+              <Link to="/project/gigs/add" className="fr">
+                <ButtonBasic bgColor={'purple'} fgColor={'white'} onClick={(e) => props.dispatch({type: 'CLEAR_GIG_STATE'})} text="Add Gig"/>
+                {/*<button
                   className="f6 fr bg-white ba b--black dim pointer pv1 black"
                   type="submit"
                   onClick={(e) => props.dispatch({type: 'CLEAR_GIG_STATE'})}>Add Gig</button>
+                */}
               </Link>
             </div>
           </div>

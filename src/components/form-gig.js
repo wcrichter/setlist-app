@@ -51,7 +51,7 @@ class FormGig extends React.Component {
       )
     } else {
     return (
-      <div className="mw9 center pv4 ph4-ns">
+      <div className="mw8 center pv4 ph4-ns">
         {equals(props.panel, 'step1') &&
         <Panel
           instructions="Fill out some basic info about the gig."
@@ -91,8 +91,10 @@ class FormGig extends React.Component {
           <div className="mw9 center bb b--black-20 header-shadow">
             <div className="cf ph2-ns">
               <div className="fl w-75 ph3 pb4">
-                <span className="f4 fw1 mr3">Selected Songs: {filter(song => song.selected, props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
+                <span className="f4 mr3">Selected Songs: {filter(song => song.selected, props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
+                {/*
                 <button className="f6 bg-white ba b--black dim pointer pv1 black" type="submit">View Selected</button>
+                */}
               </div>
             </div>
           </div>

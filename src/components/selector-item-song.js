@@ -4,7 +4,7 @@ const SelectorItemSong = (props) => {
 
   return (
     <li
-      className={`ba br3 pa3 mb2 cf pointer bg-${!props.selected ? "white" : "yellow"}`}
+      className={`ba b--black-30 br3 pa3 mb2 cf pointer bg-${!props.selected ? "black-05" : "yellow"}`}
       onClick={props.onSelected}
       >
       <div className="fl w-25-ns">{props.artist}</div>

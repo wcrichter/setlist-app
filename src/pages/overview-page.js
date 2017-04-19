@@ -43,9 +43,11 @@ class OverviewPage extends React.Component {
                   <h2 className="f4 f3-ns fw3 mb0 mt2">{props.project.location.city}, {props.project.location.state}</h2>
                   <h2 className="f6 f5-ns fw3 mb0">{join(', ', props.project.genres)}</h2>
                 </div>
+                {/*
                 <div className="dib v-mid fl w-100 w-25-ns">
                   <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Edit Project</button>
                 </div>
+                */}
               </article>
             </section>
             <section>
@@ -88,20 +90,9 @@ class OverviewPage extends React.Component {
                       <div className="f1">{length(uniq(map(song => song.artist, props.gigSelectSongs)))}</div>
                     </div>
                   </div>
-                  <div className="fl w-100-s w-50 pa2">
+                  {/*
+                  <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3 pb2 bb b--black-10">
-                        <label className="f6 fw5">Highest Rated Songs</label>
-                      </div>
-                      <ul className="list pl0">
-                        <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                        <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                        <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="fl w-100-s w-50 pa2">
-                  <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3 pb2 bb b--black-10">
                         <label className="f6 fw5">Most Played Songs</label>
                       </div>
@@ -110,6 +101,7 @@ class OverviewPage extends React.Component {
                       </ul>
                     </div>
                   </div>
+
                   <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3 pb2 bb b--black-10">
@@ -117,6 +109,7 @@ class OverviewPage extends React.Component {
                       </div>
                     </div>
                   </div>
+                  */}
                   <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
                       <div className="mb3 pb2 bb b--black-10">

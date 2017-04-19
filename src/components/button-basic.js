@@ -2,7 +2,7 @@ import React from 'react'
 
 const ButtonBasic = (props) => {
   return (
-      <button className="f6 pa2 br2 ba bg-white b--black dim pointer black" type="submit">{props.text}</button>
+      <button onClick={props.onClick} className={`f6 pa2 br2 ba bg-${props.bgColor} b--${props.fgColor} dim pointer ${props.fgColor}`} type="submit">{props.text}</button>
   )
 }
 

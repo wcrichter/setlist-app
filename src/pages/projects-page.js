@@ -38,12 +38,26 @@ class ProjectsPage extends React.Component {
     } else {
       return (
         <div>
+          <section className="mw10 center ph3 bb b--black-30 header-shadow">
+            <div className="mw8 center ph3-ns cf">
+              <div className="fl w-50 pv4">
+                <span className="f4">My Projects ({[props.projects.length]})</span>
+              </div>
+              {/*
+              <div className="fl w-50 pv4">
+                <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
+              </div>
+              */}
+            </div>
+          </section>
+          {/*
           <section className="mw10 center ph4 pv4 pb1 bb b--black-30 header-shadow">
             <h1 className="fw3 f3 dib ma0">My Projects</h1>
             <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
           </section>
+          */}
 
-          <div className="mw8 center ph4">
+          <div className="mw8 center ph3">
             {map(project => <ListItemProject key={project._id} {...project} gigs={props.gigs}/>, projectSort(props.projects))}
           </div>
         </div>
