@@ -20,24 +20,27 @@ class ListItemGigSetlistReview extends React.Component{
           <span className="f5">{props.title}</span><br />
           <span className="f6">{props.artist}</span>
         </div>
-        <div className="mb4">
-          <select onChange={(e) => props.dispatch({type: 'SET_SONG_RATING', payload: {songId: props._id, songRating: e.target.value} })}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
         <div className="fr tr mt2 w-40">
-          <ReactStars
-            value={props.rating}
-            count={5}
-            onChange={e => props.dispatch({type: 'SET_SONG_RATING', payload: {id: props.key, rating: e.target.value}})}
-            size={24}
-            color2={'#ffd700'}
-            edit={true}
-          />
+          <div className="dib">
+            <select onChange={(e) => props.dispatch({type: 'SET_SONG_RATING', payload: {songId: props._id, songRating: e.target.value} })}>
+              <option value="null"></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div className="dib ml2">
+            <ReactStars
+              value={props.rating}
+              count={5}
+              onChange={(e) => props.dispatch({type: 'SET_SONG_RATING', payload: {songId: props._id, songRating: e.target.value} })}
+              size={24}
+              color2={'#ffd700'}
+              edit={true}
+            />
+          </div>
         </div>
       </li>
     )

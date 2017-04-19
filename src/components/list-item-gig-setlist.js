@@ -13,14 +13,16 @@ const ListItemGigSetlist = (props) => {
       </div>
       <div className="dib tr mt2 w-30">
         <div className="fl">
-          <ReactStars
-            value={props.rating}
-            count={5}
-            onChange={null}
-            size={16}
-            color2={'#ffd700'}
-            edit={false}
-          />
+          <Link to={`/project/gigs/${props.gig._id}/review-form`}>
+            <ReactStars
+              value={props.rating}
+              count={5}
+              onChange={null}
+              size={16}
+              color2={'#ffd700'}
+              edit={false}
+            />
+          </Link>
         </div>
         <div className="dib tr">
         <Link to={`/project/songs/${props._id}`}>
