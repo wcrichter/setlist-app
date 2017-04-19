@@ -13,7 +13,7 @@ class SongsPage extends React.Component{
         type: 'LOAD_GIGS',
         payload: songs
       }))
-    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/songs'})     
+    this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/songs'})
   }
 
   render() {
@@ -24,7 +24,7 @@ class SongsPage extends React.Component{
           <section className="mw9 center ph3-ns bb b--black-30 header-shadow">
             <div className="cf ph2-ns">
               <div className="fl w-50 ph2 pv4">
-                <span className="f4 fw1">All Songs ({[props.songs.length]})</span>
+                <span className="f4">All Songs ({[props.songs.length]})</span>
               </div>
               <div className="fl w-50 ph2 pv4">
                 <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Songs</button>
@@ -34,7 +34,6 @@ class SongsPage extends React.Component{
           <section className="mw9 center pt2 ph3-ns">
             <ul className="list pl0 center ph3-ns">
               {map(li => <ListItemSong key={li._id} {...li} />, artistSort(props.songs))}
-
             </ul>
           </section>
         </div>

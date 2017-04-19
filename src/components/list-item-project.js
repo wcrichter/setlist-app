@@ -11,14 +11,14 @@ const ListItemProject = (props) => {
     <Link to="/project" >
       <div className="pv4 pb3 cf bb b--black-30 black" onClick={e => props.setProject(props)}>
         <div className="dib fl w-20">
-          <img src={props.imageURL} className="ba br-100 w-100" alt="" />
+          <img src={props.imageURL} className="ba b--black-50 br-100 w-100" alt="" />
         </div>
-        <div className="dib fl w-80 pl4">
-          <h1 className="f3 fw1 mt2 mb2">{props.projectName}</h1>
-          <h2 className="f6 f5-ns fw1 mt0 mb3">{join(', ', props.genres)}</h2>
-          <div className="f5 fw1 mv0">
+        <div className="dib fl w-80 pl4 pt3-ns">
+          <h1 className="f3 fw3 mt2 mb2">{props.projectName}</h1>
+          <h2 className="f6 f5-ns fw3 mt0 mb4">{join(', ', props.genres)}</h2>
+          <div className="f5 fw3 mv0">
             <div className="mb2">
-              <label className="f6 fw6">Next Gig:</label><br />
+              <label className="f6 fw5">Next Gig:</label><br />
             </div>
             <div>
               {compose(

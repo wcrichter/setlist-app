@@ -40,7 +40,7 @@ class OverviewPage extends React.Component {
             <section>
               <article className="pa4 mt2 cf">
                 <div className="dib v-mid fl w-25">
-                  <img src={props.project.imageURL} className="ba br-100 w-100" alt=""/>
+                  <img src={props.project.imageURL} className="ba b--black-50 br-100 w-100" alt=""/>
                 </div>
                 <div className="dib v-mid fl w-75 w-50-ns pl4">
                   <h1 className="f3 f2-ns fw3 mb0">{props.project.projectName}</h1>
@@ -58,7 +58,7 @@ class OverviewPage extends React.Component {
                   <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
                       <div className="mb2 pb2 bb b--black-10">
-                        <label className="f6 fw6">Upcoming Gigs:</label><br />
+                        <label className="f6 fw5">Upcoming Gigs</label><br />
                       </div>
                       <div className="pt2">
                         {compose(
@@ -68,52 +68,64 @@ class OverviewPage extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="fl w-100 w-third-ns pa2">
+                  <div className="fl w-100 w-third pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3">Total Songs:</div>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Total Songs</label>
+                      </div>
                       <div className="f1">{[props.gigSelectSongs.length]}</div>
                     </div>
                   </div>
-                  <div className="fl w-100 w-third-ns pa2">
+                  <div className="fl w-100 w-third pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3">Total Gigs:</div>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Total Gigs</label>
+                      </div>
                       <div className="f1">{[props.gigs.length]}</div>
                     </div>
                   </div>
-                  <div className="fl w-100 w-third-ns pa2">
+                  <div className="fl w-100 w-third pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3">Total Artists:</div>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Total Artists</label>
+                      </div>
                       <div className="f1">12</div>
                     </div>
                   </div>
-                  <div className="fl w-50 pa2">
+                  <div className="fl w-100-s w-50 pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3">Highest Rated Songs:</div>
-                      <ol>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Highest Rated Songs</label>
+                      </div>
+                      <ul className="list pl0">
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                      </ol>
+                      </ul>
                     </div>
                   </div>
-                  <div className="fl w-50 pa2">
+                  <div className="fl w-100-s w-50 pa2">
                   <div className="bg-white card-shadow br2 pa3">
-                    <div className="mb3">Highest Rated Songs:</div>
-                      <ol>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Most Played Songs</label>
+                      </div>
+                      <ul className="list pl0">
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
                         <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                      </ol>
+                      </ul>
                     </div>
                   </div>
                   <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3">Gig Frequency:</div>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Gig Frequency</label>
+                      </div>
                     </div>
                   </div>
                   <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <div className="mb3">Project Contributors:</div>
+                      <label className="f6 fw5">Project Members</label>
                     </div>
                   </div>
                 </div>

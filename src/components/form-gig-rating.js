@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { map, path, pathOr } from 'ramda'
+import { map, path, pathOr, merge, omit, set, lensProp, compose, assoc} from 'ramda'
 import fetch from 'isomorphic-fetch'
 import ListItemGigSetlistReview from '../components/list-item-gig-setlist-review'
+import ReduxThunk from 'redux-thunk'
 
 const putGig = (gig) => fetch('http://localhost:8080/gigs/' + gig._id, {
   headers: {
@@ -13,11 +14,25 @@ const putGig = (gig) => fetch('http://localhost:8080/gigs/' + gig._id, {
   body: JSON.stringify(gig, null, 2)
 })
 
+const mergeAndSaveGig = (currentSongs, ratedSongs) => {
+  return merge(currentSongs, ratedSongs)
+}
+
+const ratedGig = (currentGig, ratedSongs) => {
+  return compose(
+    set(lensProp('songs', ratedSongs)),
+    omit(['songs'])
+  )(currentGig)
+}
+
 class FormGigRating extends React.Component{
   componentDidMount() {
     fetch(`http://localhost:8080/gigs/${this.props.gig._id}`)
       .then(res => res.json())
+      .then(gig => this.props.setGigSongs(gig))
+      {/*
       .then(gig => this.props.dispatch({type: 'GET_SONGS_TO_RATE', payload: gig.songs}))
+      */}
   }
   render() {
     const props = this.props
@@ -56,7 +71,19 @@ class FormGigRating extends React.Component{
                 <button onClick={e => {
                   putGig(props.gig)
                 }}>Save</button>
+                <button onClick={e => {
+                  props.saveRatedGig(props.gig)
+                }}>Thunk Save</button>
               </div>
+              <button className="ba b--black pa3" onClick={e => {
+                console.log('gig songs:', props.gig.songs)
+                console.log('rated songs:', props.gigRateSongs)
+                console.log('omit songs from gig:', omit(['songs'], props.gig.songs))
+
+                console.log(set(lensProp('songs'), props.gigRateSongs, omit(['songs'], props.gig.songs)))
+                console.log('ratedGig:', compose(assoc('songs', props.gigRateSongs), omit(['songs']))(props.gig))
+                {putGig(compose(assoc('songs', props.gigRateSongs), omit(['songs']))(props.gig))}
+              }}>New Save Type</button>
             </div>
           </section>
         </div>
@@ -65,7 +92,17 @@ class FormGigRating extends React.Component{
   }
 }
 
+const mapActionsToProps = (dispatch, props) => {
+  return {
+    saveRatedGig: (dispatch) => (gig) => {
+      console.log('gig', gig)
+      dispatch({type: 'SET_GIG_SONGS', payload: props.gigRateSongs})
+      .then((gig) => putGig(gig))
+    },
+    setGigSongs: (gig) => dispatch({type: 'GET_SONGS_TO_RATE', payload: gig.songs})
+  }
+}
 
-const connector = connect(state => state)
+const connector = connect(state => state, mapActionsToProps)
 
 export default connector(FormGigRating)

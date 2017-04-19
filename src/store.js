@@ -1,5 +1,6 @@
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {append,merge,map,split,set,lensProp,find,findIndex,propEq,update,lensPath,omit,compose} from 'ramda'
+import ReduxThunk from 'redux-thunk'
 
 const SET_PROJECT = 'SET_PROJECT'
 const SET_PROJECTS = 'SET_PROJECTS'
