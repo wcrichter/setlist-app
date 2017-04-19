@@ -46,7 +46,7 @@ class FormGigSmart extends React.Component {
 
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
-      .then(songs => this.props.getSongsForForm(songs))
+      .then(songs => this.props.getSongsForForm(filter(song => song.projectId === this.props.project._id, songs)))
   }
 
   render() {

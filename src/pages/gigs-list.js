@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { map, length, sort, sortBy, prop, lensPath, path, descend } from 'ramda'
+import { map, filter, length, sort, sortBy, prop, lensPath, path, descend } from 'ramda'
 import ListItemGig from '../components/list-item-gig'
 
 class ListGigs extends React.Component{
@@ -10,7 +10,7 @@ class ListGigs extends React.Component{
       .then(res => res.json())
       .then(gigs => this.props.dispatch({
         type: 'SET_GIGS',
-        payload: gigs
+        payload: filter(gig => gig.projectId === this.props.project._id, gigs)
       }))
     this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/gigs'})
   }

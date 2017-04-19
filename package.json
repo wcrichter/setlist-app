@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "animate.css": "^3.5.2",
+    "chart.js": "^2.5.0",
     "font-awesome": "^4.7.0",
     "moment": "^2.18.1",
     "ramda": "^0.23.0",

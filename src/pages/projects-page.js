@@ -38,13 +38,8 @@ class ProjectsPage extends React.Component {
     } else {
       return (
         <div>
-          {/*
-          <div className="mw9 center ph4 pt4">
-            {map(project => <TestListItemThing key={project.name} {...project} />, [addKey(props.project)])}
-          </div>
-          */}
           <section className="mw10 center ph4 pv4 pb1 bb b--black-30 header-shadow">
-            <h1 className="fw1 f3 dib ma0">My Projects</h1>
+            <h1 className="fw3 f3 dib ma0">My Projects</h1>
             <button className="f6 fr bg-white ba b--black dim pointer pv1 black" type="submit">Add Project</button>
           </section>
 

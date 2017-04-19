@@ -124,7 +124,7 @@ const store = createStore(
     },
     songs: (state = [], action) => {
       switch(action.type) {
-        case 'LOAD_GIGS':
+        case 'LOAD_SONGS':
           return action.payload
         default:
           return state

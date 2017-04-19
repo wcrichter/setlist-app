@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { map, length, sortBy, prop } from 'ramda'
+import { map, length, sortBy, prop, filter } from 'ramda'
 import ListItemSong from '../components/list-item-song'
 import fetch from 'isomorphic-fetch'
+
 
 class SongsPage extends React.Component{
 
@@ -10,8 +11,8 @@ class SongsPage extends React.Component{
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
       .then(songs => this.props.dispatch({
-        type: 'LOAD_GIGS',
-        payload: songs
+        type: 'LOAD_SONGS',
+        payload: filter(song => song.projectId === this.props.project._id, songs)
       }))
     this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project/songs'})
   }
@@ -42,7 +43,8 @@ class SongsPage extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-  songs: state.songs
+  songs: state.songs,
+  project: state.project
 })
 
 const connector = connect(mapStateToProps)

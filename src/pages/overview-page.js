@@ -1,20 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { compose, map, filter, path, join } from 'ramda'
-
-
-// backgroundImage: 'url(' + props.project.imageURL + ')',
-
+import { compose, map, filter, path, join, length, uniq } from 'ramda'
 
 
 class OverviewPage extends React.Component {
   componentDidMount() {
     fetch('http://localhost:8080/gigs')
       .then(res => res.json())
-      .then(gigs => this.props.dispatch({type: 'SET_GIGS', payload: gigs}))
+      .then(gigs => this.props.dispatch({type: 'SET_GIGS', payload: filter(gig => gig.projectId === this.props.project._id, gigs)}))
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
-      .then(songs => this.props.dispatch({type: 'GET_SONGS_FOR_FORM', payload: songs}))
+      .then(songs => this.props.dispatch({type: 'GET_SONGS_FOR_FORM', payload: filter(song => song.projectId === this.props.project._id, songs)}))
     this.props.dispatch({type: 'SET_CURRENT_COMPONENT', payload:'/project'})
   }
   render() {
@@ -62,7 +58,7 @@ class OverviewPage extends React.Component {
                       </div>
                       <div className="pt2">
                         {compose(
-                          map(gig => <div key={gig._id} className="cf"><span className="fl w-20">{gig.date}</span><span className="fl w-40">{gig.name}</span><span className="fl w-40">{gig.venue}</span></div>),
+                          map(gig => <div key={gig._id} className="cf pb2"><span className="fl w-20">{gig.date}</span><span className="fl w-40">{gig.name}</span><span className="fl w-40">{gig.venue}</span></div>),
                           filter(gig => gig.projectId === props.project._id ? gig : null)
                         )(props.gigs)}
                       </div>
@@ -89,7 +85,7 @@ class OverviewPage extends React.Component {
                       <div className="mb3 pb2 bb b--black-10">
                         <label className="f6 fw5">Total Artists</label>
                       </div>
-                      <div className="f1">12</div>
+                      <div className="f1">{length(uniq(map(song => song.artist, props.gigSelectSongs)))}</div>
                     </div>
                   </div>
                   <div className="fl w-100-s w-50 pa2">
@@ -110,9 +106,7 @@ class OverviewPage extends React.Component {
                         <label className="f6 fw5">Most Played Songs</label>
                       </div>
                       <ul className="list pl0">
-                        <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                        <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
-                        <li className="pv1"><span className="f5">Shakedown Street</span><br /><span className="f6">The Grateful Dead</span></li>
+                        {map(song => <li><span className="f5">{song.title}</span></li>, props.gigSelectSongs)}
                       </ul>
                     </div>
                   </div>
@@ -125,7 +119,12 @@ class OverviewPage extends React.Component {
                   </div>
                   <div className="fl w-100 pa2">
                     <div className="bg-white card-shadow br2 pa3">
-                      <label className="f6 fw5">Project Members</label>
+                      <div className="mb3 pb2 bb b--black-10">
+                        <label className="f6 fw5">Project Members</label>
+                      </div>
+                      <ul className="list pl0 mv0">
+                        {map(member => <li className="pb2"><div className="dib">{member.firstName + " " + member.lastName}</div><span className="ph2">-</span><div className="dib black-70 i">{join(', ', member.skills)}</div></li>, props.project.members)}
+                      </ul>
                     </div>
                   </div>
                 </div>

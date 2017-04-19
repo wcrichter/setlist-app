@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {filter, map, compose, join} from 'ramda'
+import {filter, map, compose, join, slice} from 'ramda'
 
 
 const ListItemProject = (props) => {
@@ -23,6 +23,7 @@ const ListItemProject = (props) => {
             <div>
               {compose(
                 map(gig => <div key={gig._id} className="cf"><span className="fl w-20">{gig.date}</span><span className="fl w-40">{gig.name}</span><span className="fl w-40">{gig.venue}</span></div>),
+                slice(0, 1),
                 filter(gig => gig.projectId === props._id ? gig : null)
               )(props.gigs)}
             </div>

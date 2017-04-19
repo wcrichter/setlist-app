@@ -17,11 +17,11 @@ const docs = [
     },
     "dateFormed": "2009-08-01",
     "members": [
-      "Chris Richter",
-      "Matt Stanley",
-      "Thomas McElwee",
-      "John Tankersley",
-      "Nick Collins"
+      {'firstName': 'Chris', 'lastName': 'Richter', 'skills': ['Bass Guitar']},
+      {'firstName': 'John', 'lastName': 'Tankersley', 'skills': ['Drums']},
+      {'firstName': 'Matt', 'lastName': 'Stanley', 'skills': ['Vocals', 'Acoustic Guitar', 'Keys']},
+      {'firstName': 'Thomas', 'lastName': 'McElwee', 'skills': ['Vocals', 'Electric Guitar']},
+      {'firstName': 'Nick', 'lastName': 'Collins', 'skills': ['Vocals', 'Electric Guitar']},
     ]
   },{
     "_id": "project_yellow_submarine_charleston",
@@ -35,10 +35,10 @@ const docs = [
     },
     "dateFormed": "2006-09-15",
     "members": [
-      "Saul Garret",
-      "Allen Robinson",
-      "Martin Jones",
-      "Dan Elliot"
+      {'firstName': 'Teddy', 'lastName': 'Winslow', 'skills': ['Vocals', 'Electric Guitar']},
+      {'firstName': 'Jeff', 'lastName': 'Cruz', 'skills': ['Vocals', 'Electric Guitar']},
+      {'firstName': 'Andy', 'lastName': 'Timmons', 'skills': ['Vocals', 'Bass Guitar']},
+      {'firstName': 'Craig', 'lastName': 'Samsonite', 'skills': ['Vocals', 'Drums']},
     ]
   },{
     "_id": "song_beatles_come_together",
@@ -223,7 +223,20 @@ const docs = [
     "projectId": "project_fowlers_mustache_charleston",
     "lyrics": `Hey bra, how we doin' man? / All right. /It's been a while man, life's so rad! /This band's my favorite man, don't ya love 'em? /Yeah. /Aw man, you want a beer? /All right. /Aw man, this is the best. I'm so glad we're all back together and stuff. /This is great, man. /Yeah. /Hey, did you know about the party after the show? /Yeah. /Aw man, it's gonna be the best, I'm so stoked! Take it easy bra'. //I'm me /Me be /Goddamn /I am /I can /Sing and /Hear me /Know me /If you want to destroy my sweater /Hold this thread as I walk away /Hey, what's up? /Not much. /Did you hear about the party? /Yeah. /Um, I think I'm gonna go but, um, my friends don't really wanna go. Could I get a ride? /Oh no /It go /It gone /Bye-bye /Who I /I think /I sink /And I die /If you want to destroy my sweater /Hold this thread as I walk away / Watch me unravel, I'll soon be naked /Lying on the floor (lying on the floor) /I've come undone / If you want to destroy my sweater /Hold this thread as I walk away (as I walk away) /Watch me unravel, I'll soon be naked /Lying on the floor (lying on the floor) /I've come undone / I don't want to destroy your tank-top /Let's be friends and just walk away /It's good to see you lying there in your Superman skivvies /Lying on the floor (lying on the floor) /I've come undone`
   },{
-    "_id": "gig_fowlers_mustache_arts_bar_and_grill",
+    "_id": "song_beatles_eleanor_rigby",
+    "type": "song",
+    "title": "Eleanor Rigby",
+    "artist": "Beatles",
+    "album": "Yellow Submarine",
+    "year": "1966",
+    "songKey": "G",
+    "genres": ["Rock", "Pop Rock", "British"],
+    "tags": ["classic", "60s", "Yellow Submarine"],
+    "explicit": false,
+    "projectId": "project_yellow_submarine_charleston",
+    "lyrics": `Ah look at all the lonely people/Ah look at all the lonely people/Eleanor Rigby, picks up the rice/In the church where a wedding has been/Lives in a dream/Waits at the window, wearing the face/That she keeps in a jar by the door/Who is it for//All the lonely people/Where do they all come from?/All the lonely people/Where do they all belong?//Father McKenzie, writing the words/Of a sermon that no one will hear/No one comes near/Look at him working, darning his socks/In the night when there's nobody there/What does he care//All the lonely people/Where do they all come from?/All the lonely people/Where do they all belong?`
+  },{
+    "_id": "gig_fowlers_mustache_2017-04-12_arts_bar_and_grill",
     "type": "gig",
     "projectId": "project_fowlers_mustache_charleston",
     "name": "Have-A-Heart Fundraiser",
@@ -237,13 +250,73 @@ const docs = [
         "title": "Into The Mystic",
         "artist": "Van Morrison",
         "tags": ["classic", "70s", "slow", "slow dance"],
-        "rating": ""
+        "rating": "3"
       }, {
         "_id": "song_beatles_come_together",
         "title": "Come Together",
         "artist": "Beatles",
         "tags": ["classic", "bass", "60s"],
-        "rating": ""
+        "rating": "4"
+      },{
+        "_id": "song_weezer_undone",
+        "title": "Undone",
+        "artist": "Weezer",
+        "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+        "rating": "2"
+      },{
+        "_id": "song_weezer_say_it_aint_so",
+        "title": "Say It Ain't So",
+        "artist": "Weezer",
+        "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+        "rating": "1"
+      },{
+        "_id": "song_fowlers_mustache_aint_life_hard",
+        "title": "Ain't Life Hard",
+        "artist": "Fowler's Mustache",
+        "tags": ["easy", "slow", "twangy", "slow-dance"],
+        "rating": "4"
+      },
+    ],
+  },{
+    "_id": "gig_fowlers_mustache_2017-08-17_wild_wing_cafe",
+    "type": "gig",
+    "projectId": "project_fowlers_mustache_charleston",
+    "name": "St. Patty's Day Block Party",
+    "venue": "Wild Wing Cafe",
+    "date": "2017-08-17",
+    "eventType": "Bar",
+    "tags": ["wild", "crazy", "rowdy", "loud", "drunk"],
+    "songs": [
+      {
+        "_id": "song_van_morrison_into_the_mystic",
+        "title": "Into The Mystic",
+        "artist": "Van Morrison",
+        "tags": ["classic", "70s", "slow", "slow dance"],
+        "rating": "3"
+      }, {
+        "_id": "song_rolling_stones_dead_flowers",
+        "title": "Dead Flowers",
+        "artist": "Rolling Stones",
+        "tags": ["classic", "70's"],
+        "rating": "4"
+      },{
+        "_id": "song_weezer_undone",
+        "title": "Undone",
+        "artist": "Weezer",
+        "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+        "rating": "5"
+      },{
+        "_id": "song_weezer_say_it_aint_so",
+        "title": "Say It Ain't So",
+        "artist": "Weezer",
+        "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+        "rating": "5"
+      },{
+        "_id": "song_lit_my_own_worst_enemy",
+        "title": "My Own Worst Enemy",
+        "artist": "Lit",
+        "tags": ["rowdy", "90s", "sing-along"],
+        "rating": "5"
       },
     ],
   },{
