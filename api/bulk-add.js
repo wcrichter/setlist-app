@@ -237,19 +237,13 @@ const docs = [
         "title": "Into The Mystic",
         "artist": "Van Morrison",
         "tags": ["classic", "70s", "slow", "slow dance"],
-        "feedback": {
-          "rating": 4,
-          "comments": "Lot's of dancing during this one!"
-        }
+        "rating": ""
       }, {
         "_id": "song_beatles_come_together",
         "title": "Come Together",
         "artist": "Beatles",
         "tags": ["classic", "bass", "60s"],
-        "feedback": {
-          "rating": 4,
-          "comments": "Good sing-along!"
-        }
+        "rating": ""
       },
     ],
   },{

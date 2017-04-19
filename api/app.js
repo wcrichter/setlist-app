@@ -88,6 +88,7 @@ app.post('/gigs', function(req, res, next) {
 
 app.put('/gigs/:id', function(req, res, next) {
   updateGig(req.body, function(err, updatedGig) {
+    console.log('Put request', req.body)
     if(err) return next(new HTTPError(err.status, err.message, err))
     res.status(200).send(updatedGig)
   })
