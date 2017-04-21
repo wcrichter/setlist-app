@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 
-
 const {split} = require('ramda')
 const bodyParser = require('body-parser')
 
@@ -26,7 +25,7 @@ app.use(cors({credentials: true}))
 app.use(bodyParser.json())
 
 //////////////
-//// SONGS
+//// PROJECTS
 //////////////
 
 app.get('/projects/:id', function(req, res, next) {
