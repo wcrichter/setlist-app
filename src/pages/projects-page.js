@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {map, assoc, path, sortBy, prop} from 'ramda'
 import ListItemProject from '../components/list-item-project'
+const uri = process.env.REACT_APP_API
 
 //add an onClick function that will change the state of the current project
 

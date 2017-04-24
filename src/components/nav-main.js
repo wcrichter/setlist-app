@@ -11,7 +11,7 @@ const NavMain = (props) => {
           <Link to="/">
           <p className="dib v-mid link white dim"><i className="fa fa-home mr2" /></p>
           </Link>
-          <span className="mr2">|</span>
+          <span className="mr2 gray">|</span>
           <Link to="/projects"><p className="dib v-mid link white dim">Projects</p></Link>
         </div>
         <div className="fl w-third pa2 center tc">

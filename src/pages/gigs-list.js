@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { map, filter, length, sort, sortBy, prop, lensPath, path, descend } from 'ramda'
 import ListItemGig from '../components/list-item-gig'
 import ButtonBasic from '../components/button-basic'
+const uri = process.env.REACT_APP_API
 
 class ListGigs extends React.Component{
   componentDidMount() {
@@ -39,7 +40,7 @@ class ListGigs extends React.Component{
         </section>
         <section className="mw8 center pt2 ph3">
           <ul className="list pl0 center">
-            {map(li => <ListItemGig key={li.name}{...li} />, gigSort(props.gigs))}
+            {map(li => <ListItemGig key={li.name}{...li} />, props.gigs)}
           </ul>
         </section>
       </div>

@@ -39,7 +39,7 @@ const Panel = (props) => {
         }
         {props.onFinish &&
         <div className="ph1 dib">
-          <ButtonBasic fgColor={'white'} bgColor={'purple'} text={'Save'} onClick={props.Finish} />
+          <ButtonBasic fgColor={'white'} bgColor={'purple'} text={'Save'} onClick={props.onFinish} />
         </div>
         }
       </footer>

@@ -7,7 +7,7 @@ import ListItemGigSetlistReview from '../components/list-item-gig-setlist-review
 import ReduxThunk from 'redux-thunk'
 import ButtonBasic from '../components/button-basic'
 
-const putGig = (gig, history) => fetch('http://localhost:8080/gigs/' + gig._id, {
+const putGig = (gig, history) => fetch('http://localhost:8080/' + gig._id, {
   headers: {
     'Content-Type': 'application/json'
   },

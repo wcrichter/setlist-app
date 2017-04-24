@@ -156,7 +156,6 @@ const mapActionsToProps = dispatch => {
     setGigDescription: (text) => dispatch({type: 'SET_GIG_DESCRIPTION', payload: text}),
     setGigAdmission: (admission) => dispatch({type: 'SET_GIG_ADMISSION', payload: admission}),
     setGigTags: (text) => dispatch({type: 'SET_GIG_TAGS', payload: text}),
-
     setGigSongs: (text) => dispatch({type: 'SET_GIG_SONGS', payload: text}),
 
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
@@ -182,8 +181,8 @@ const mapActionsToProps = dispatch => {
             dispatch({type: 'CLEAR_GIG_STATE'})
             history.push('/gigs')
           }).catch(err => console.log(err.message))
-
       }
+      
     }
   }
 }

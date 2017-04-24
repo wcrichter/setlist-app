@@ -11,16 +11,13 @@ import GigInputDetails from './form-gig-input-details'
 import ConfirmSetlist from './form-gig-confirm-setlist'
 
 
-const postGig = (gig) => {
-    console.log("Here's the gig", gig)
-    fetch('http://localhost:8080/gigs', {
+const postGig = (gig) => fetch('http://localhost:8080/gigs', {
     headers: {
       'Content-Type': 'application/json'
     },
     method: 'POST',
     body: JSON.stringify(gig)
   })
-}
 
 const getGig = (id) => fetch('http://localhost:8080/gigs/' + id)
 
@@ -35,7 +32,7 @@ const putGig = (gig) => fetch('http://localhost:8080/gigs/' + gig._id, {
 class FormGig extends React.Component {
 
   componentDidMount() {
-
+    this.props.setGigProjectId(this.props.project._id)
     fetch('http://localhost:8080/songs')
       .then(res => res.json())
       .then(songs => this.props.getSongsForForm(filter(song => song.projectId === this.props.project._id, songs)))
@@ -92,9 +89,6 @@ class FormGig extends React.Component {
             <div className="cf ph2-ns">
               <div className="fl w-75 ph3 pb4">
                 <span className="f4 mr3">Selected Songs: {filter(song => song.selected, props.gigSelectSongs).length} of {props.gigSelectSongs.length}</span>
-                {/*
-                <button className="f6 bg-white ba b--black dim pointer pv1 black" type="submit">View Selected</button>
-                */}
               </div>
             </div>
           </div>
@@ -134,7 +128,9 @@ const mapActionsToProps = dispatch => {
     setGigEventType: (type) => dispatch({type: 'SET_GIG_EVENT_TYPE', payload: type}),
     setGigAdmission: (admission) => dispatch({type: 'SET_GIG_ADMISSION', payload: admission}),
     setGigDescription: (text) => dispatch({type: 'SET_GIG_DESCRIPTION', payload: text}),
+    setGigTags: (text) => dispatch({type: 'SET_GIG_TAGS', payload: text}),
     setGigSongs: (songs) => dispatch({type: 'SET_GIG_SONGS', payload: songs}),
+    setGigProjectId: (projectID) => dispatch({type: 'SET_GIG_PROJECTID', payload: projectID}),
 
     add: (gig) => dispatch({type: 'ADD_GIG', payload: gig}),
     clearGigState: () => dispatch({type:'CLEAR_GIG_STATE'}),
@@ -154,7 +150,7 @@ const mapActionsToProps = dispatch => {
           .then(res => res.json())
           .then(res => {
             dispatch({type: 'CLEAR_GIG_STATE'})
-            history.push('/gigs')
+            history.push('/project/gigs')
           }).catch(err => console.log(err.message))
 
       }

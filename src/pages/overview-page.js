@@ -50,7 +50,7 @@ class OverviewPage extends React.Component {
                 */}
               </article>
             </section>
-            <section>
+            <section className="pb4">
               <div className="mw9 center ph3-ns">
                 <div className="cf ph2-ns">
                   <div className="fl w-100 pa2">
@@ -116,7 +116,7 @@ class OverviewPage extends React.Component {
                         <label className="f6 fw5">Project Members</label>
                       </div>
                       <ul className="list pl0 mv0">
-                        {map(member => <li className="pb2"><div className="dib">{member.firstName + " " + member.lastName}</div><span className="ph2">-</span><div className="dib black-70 i">{join(', ', member.skills)}</div></li>, props.project.members)}
+                        {map(member => <li key={member.firstName + member.lastName} className="pb2"><div className="dib">{member.firstName + " " + member.lastName}</div><span className="ph2">-</span><div className="dib black-70 i">{join(', ', member.skills)}</div></li>, props.project.members)}
                       </ul>
                     </div>
                   </div>

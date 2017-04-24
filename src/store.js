@@ -1,6 +1,5 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import {append,merge,map,split,set,lensProp,find,findIndex,propEq,update,lensPath,omit,compose} from 'ramda'
-import ReduxThunk from 'redux-thunk'
 
 const SET_PROJECT = 'SET_PROJECT'
 const SET_PROJECTS = 'SET_PROJECTS'
@@ -21,6 +20,7 @@ const SET_GIG_ADMISSION = 'SET_GIG_ADMISSION'
 const SET_GIG_DESCRIPTION = 'SET_GIG_DESCRIPTION'
 const SET_GIG_TAGS = 'SET_GIG_TAGS'
 const SET_GIG_SONGS = 'SET_GIG_SONGS'
+const SET_GIG_PROJECTID = 'SET_GIG_PROJECTID'
 
 const CLEAR_GIG_STATE = 'CLEAR_GIG_STATE'
 
@@ -105,6 +105,9 @@ const store = createStore(
         case SET_GIG_SONGS:
           console.log('songs in gig reducer', action.payload)
           return merge(state, {songs: action.payload})
+        case SET_GIG_PROJECTID:
+          console.log('current projectId added to gig form', action.payload)
+          return merge(state, {projectId: action.payload})
 
         // case 'SET_SONG_RATING':
         //   console.log('set song rating', action.payload)
