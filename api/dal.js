@@ -4,7 +4,8 @@ const PouchDB = require('pouchdb-http')
 PouchDB.plugin(require('pouchdb-mapreduce'))
 const couch_base_uri = "http://127.0.0.1:5984/"
 const couch_dbname = "setlist"
-const db = new PouchDB(process.env.CLOUDANT_API_KEY)
+const db = new PouchDB(couch_base_uri + couch_dbname)
+//const db = new PouchDB(process.env.CLOUDANT_API_KEY)
 const {map, uniq, prop, compose, omit, drop} = require('ramda')
 
 //////////////
@@ -75,11 +76,10 @@ function listGigs(cb) {
 
 function addGig(gig, cb) {
   gig.type = "gig"
-  let newId = "gig_" + gig.name.toLowerCase() + gig.venue.toLowerCase()
+  let newId = "gig_" + gig.projectId + "_" + gig.date + "_" + gig.venue.toLowerCase()
   gig._id = prepID(newId)
   db.put(gig, function(err, addedGig) {
     if(err) return cb(err)
-    console.log('err adding gig', err)
     cb(null, addedGig)
     console.log('gig added successfully', addedGig)
   })

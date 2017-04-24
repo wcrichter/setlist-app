@@ -79,7 +79,9 @@ app.get('/gigs', function(req, res, next) {
 })
 
 app.post('/gigs', function(req, res, next) {
+  console.log('inside the app with the req body:', req.body)
   addGig(req.body, function(err, addedGig) {
+    console.log('Post request', req.body)
     if(err) return next(new HTTPError(err.status, err.message, err))
     res.status(201).send(addedGig)
   })

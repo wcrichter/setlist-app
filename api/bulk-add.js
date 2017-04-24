@@ -52,7 +52,7 @@ const docs = [
     "tags": ["classic", "60s", "jam", "jam-band"],
     "explicit": false,
     "projectId": "project_fowlers_mustache_charleston",
-    "lyrics": "`Here come old flat top/He come groovin' up slowly/He got joo joo eyeballs/He one holy rollers/He got hair down to his knee/Got to be a joker/He just do what he please//He wear no shoeshine/He got toe jam football/He got monkey finger/He shoot Coca Cola/He say I know you, you know me/One thing I can tell you is/You got to be free/Come together, right now/Over me//He bad production/He got walrus gumboot/He got Ono sideboard/He one spinal cracker/He got feet down below his knees/Hold you in his armchair/You can feel his disease/Come together, right now/Over me//He roller coaster/He got early warning/He got muddy water/He one Mojo filter/He say one and one and one is three/Got to be good looking/Cause he's so hard to see/Come together right now/Over me//Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah`"
+    "lyrics": "Here come old flat top/He come groovin' up slowly/He got joo joo eyeballs/He one holy rollers/He got hair down to his knee/Got to be a joker/He just do what he please//He wear no shoeshine/He got toe jam football/He got monkey finger/He shoot Coca Cola/He say I know you, you know me/One thing I can tell you is/You got to be free/Come together, right now/Over me//He bad production/He got walrus gumboot/He got Ono sideboard/He one spinal cracker/He got feet down below his knees/Hold you in his armchair/You can feel his disease/Come together, right now/Over me//He roller coaster/He got early warning/He got muddy water/He one Mojo filter/He say one and one and one is three/Got to be good looking/Cause he's so hard to see/Come together right now/Over me//Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah/Come together, yeah"
   }, {
     "_id": "song_weezer_say_it_aint_so",
     "type": "song",
@@ -236,12 +236,64 @@ const docs = [
     "projectId": "project_yellow_submarine_charleston",
     "lyrics": `Ah look at all the lonely people/Ah look at all the lonely people/Eleanor Rigby, picks up the rice/In the church where a wedding has been/Lives in a dream/Waits at the window, wearing the face/That she keeps in a jar by the door/Who is it for//All the lonely people/Where do they all come from?/All the lonely people/Where do they all belong?//Father McKenzie, writing the words/Of a sermon that no one will hear/No one comes near/Look at him working, darning his socks/In the night when there's nobody there/What does he care//All the lonely people/Where do they all come from?/All the lonely people/Where do they all belong?`
   },{
+    "_id": "song_beatles_because",
+    "type": "song",
+    "title": "Because",
+    "artist": "Beatles",
+    "album": "Abbey Road",
+    "year": "1969",
+    "songKey": "D",
+    "genres": ["Rock", "Pop Rock", "British"],
+    "tags": ["slow", "60s", "sad", "acapella"],
+    "explicit": false,
+    "projectId": "project_yellow_submarine_charleston",
+    "lyrics": `Because the world is round it turns me on/Because the world is round, ah//Because the wind is high it blows my mind/Because the wind is high, ah//Love is old, love is new/Love is all, love is you//Because the sky is blue, it makes me cry/Because the sky is blue, ah/Ah`
+  },{
+    "_id": "song_beatles_yellow_submarine",
+    "type": "song",
+    "title": "Yellow Submarine",
+    "artist": "Beatles",
+    "album": "Yellow Submarine",
+    "year": "1966",
+    "songKey": "E",
+    "genres": ["Rock", "Pop Rock", "British"],
+    "tags": ["slow", "happy", "sing-along", "Ringo"],
+    "explicit": false,
+    "projectId": "project_yellow_submarine_charleston",
+    "lyrics": `In the town where I was born/Lived a man who sailed to sea/And he told us of his life/In the land of submarines/So we sailed up to the sun/Till we found a sea of green/And we lived beneath the waves/In our yellow submarine//We all live in a yellow submarine/Yellow submarine, yellow submarine/We all live in a yellow submarine/Yellow submarine, yellow submarine//And our friends are all aboard/Many more of them live next door/And the band begins to play//We all live in a yellow submarine/Yellow submarine, yellow submarine/We all live in a yellow submarine/Yellow submarine, yellow submarine`
+  },{
+    "_id": "song_beatles_dont_let_me_down",
+    "type": "song",
+    "title": "Don't Let Me Down",
+    "artist": "Beatles",
+    "album": "Imagine: John Lennon",
+    "year": "1988",
+    "songKey": "F#",
+    "genres": ["Rock", "Pop Rock", "British"],
+    "tags": ["slow", "rooftop"],
+    "explicit": false,
+    "projectId": "project_yellow_submarine_charleston",
+    "lyrics": `Don't let me down, don't let me down/Don't let me down, don't let me down//Nobody ever loved me like she does/Oh, she does, yeah, she does/And if somebody loved me like she do me/Oh, she do me, yes, she does//Don't let me down, don't let me down/Don't let me down, don't let me down//I'm in love for the first time/Don't you know it's gonna last/It's a love that lasts forever/It's a love that had no past/Don't let me down, don't let me down/Don't let me down, don't let me down`
+  },{
+    "_id": "song_george_harrison_all_things_must_pass",
+    "type": "song",
+    "title": "All Things Must Pass",
+    "artist": "George Harrison",
+    "album": "All Things Must Pass",
+    "year": "1970",
+    "songKey": "E",
+    "genres": ["Folk", "British"],
+    "tags": ["slow", "sad", "sing-along", "George", "Harrison"],
+    "explicit": false,
+    "projectId": "project_yellow_submarine_charleston",
+    "lyrics": `Sunrise doesn't last all morning/A cloudburst doesn't last all day /Seems my love is up /And has left you with no warning /But it's not always going /To be this grey/All things must pass/All things must pass away/Sunset doesn't last all evening/A mind can blow those clouds away /After all this my love is up /And must be leaving /But it's not always going /To be this grey/All things must pass/All things must pass away`
+  },{
     "_id": "gig_fowlers_mustache_2017-04-12_arts_bar_and_grill",
     "type": "gig",
     "projectId": "project_fowlers_mustache_charleston",
     "name": "Have-A-Heart Fundraiser",
     "venue": "Arts Bar and Grill",
-    "date": "2017-04-12",
+    "date": "2017-05-12",
     "eventType": "Fundraiser",
     "tags": ["classic", "70's", "slow", "slow dance"],
     "songs": [
@@ -278,12 +330,12 @@ const docs = [
       },
     ],
   },{
-    "_id": "gig_fowlers_mustache_2017-08-17_wild_wing_cafe",
+    "_id": "gig_fowlers_mustache_2017-05-17_wild_wing_cafe",
     "type": "gig",
     "projectId": "project_fowlers_mustache_charleston",
-    "name": "St. Patty's Day Block Party",
+    "name": "Wing Fest",
     "venue": "Wild Wing Cafe",
-    "date": "2017-08-17",
+    "date": "2017-05-17",
     "eventType": "Bar",
     "tags": ["wild", "crazy", "rowdy", "loud", "drunk"],
     "songs": [
@@ -293,6 +345,48 @@ const docs = [
         "artist": "Van Morrison",
         "tags": ["classic", "70s", "slow", "slow dance"],
         "rating": "3"
+      }, {
+        "_id": "song_rolling_stones_dead_flowers",
+        "title": "Dead Flowers",
+        "artist": "Rolling Stones",
+        "tags": ["classic", "70's"],
+        "rating": "4"
+      },{
+        "_id": "song_weezer_undone",
+        "title": "Undone",
+        "artist": "Weezer",
+        "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+        "rating": "5"
+      },{
+        "_id": "song_weezer_say_it_aint_so",
+        "title": "Say It Ain't So",
+        "artist": "Weezer",
+        "tags": ["ballad", "90s", "solo", "emo", "nerd"],
+        "rating": "5"
+      },{
+        "_id": "song_lit_my_own_worst_enemy",
+        "title": "My Own Worst Enemy",
+        "artist": "Lit",
+        "tags": ["rowdy", "90s", "sing-along"],
+        "rating": "5"
+      },
+    ],
+  },{
+    "_id": "gig_fowlers_mustache_2017-06-17_the_windjammer",
+    "type": "gig",
+    "projectId": "project_fowlers_mustache_charleston",
+    "name": "Sol Fest",
+    "venue": "The Windjammer",
+    "date": "2017-06-17",
+    "eventType": "Festival",
+    "tags": ["wild", "crazy", "rowdy", "loud", "beach"],
+    "songs": [
+      {
+        "_id": "song_grateful_dead_shakedown_street",
+        "title": "Shakedown Street",
+        "artist": "Grateful Dead",
+        "tags": ["classic", "70s", "groove", "jam"],
+        "rating": "5"
       }, {
         "_id": "song_rolling_stones_dead_flowers",
         "title": "Dead Flowers",
@@ -330,11 +424,33 @@ const docs = [
     "tags": ["competition", "classic", "rock"],
     "songs": [
       {
-        "_id": "song_beatles_come_together",
-        "title": "Come Together",
+        "_id": "song_george_harrison_all_things_must_pass_come_together",
+        "title": "All Things Must Pass",
+        "artist": "George Harrison",
+        "tags": ["slow", "sad", "sing-along", "George", "Harrison"],
+        "rating": "2"
+      },
+      {
+        "_id": "song_beatles_yellow_submarine",
+        "title": "Yellow Submarine",
         "artist": "Beatles",
-        "tags": ["classic", "60s", "jam", "jam-band"],
-      }
+        "tags": ["slow", "happy", "sing-along", "Ringo"],
+        "rating": "1"
+      },
+      {
+        "_id": "song_beatles_eleanor_rigby",
+        "title": "Eleanor Rigby",
+        "artist": "Beatles",
+        "tags": ["classic", "60s", "Yellow Submarine"],
+        "rating": "5"
+      },
+      {
+        "_id": "song_beatles_because",
+        "title": "Because",
+        "artist": "Beatles",
+        "tags": ["slow", "60s", "sad", "acapella"],
+        "rating": "5"
+      },
     ],
   },
 

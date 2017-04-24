@@ -19,5 +19,8 @@
     "pouchdb-http": "^6.0.2",
     "pouchdb-mapreduce": "^6.1.2",
     "ramda": "^0.23.0"
-  }
+  },
+  "env": {
+    "CLOUDANT_API_KEY": "@cloudant-api-key"
+}
 }
