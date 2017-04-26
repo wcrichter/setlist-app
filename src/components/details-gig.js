@@ -10,7 +10,7 @@ const deleteGig = (gig) => {
   console.log('gig to delete', gig)
   return fetch(`http://localhost:8080/gigs/${gig._id}`, {
     headers: {
-      'Content-Type:': 'application/json'
+      'Content-Type': 'application/json'
     },
     method: 'DELETE',
     body: JSON.stringify(gig)
