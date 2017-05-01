@@ -43,14 +43,13 @@ class DetailsGig extends React.Component{
                 <Link to={`/project/gigs/${this.props.match.params.id}/review-form`}>
                   <i className="fa fa-star fa-2x" aria-hidden="true"></i>
                 </Link>
-                <a href="#" onClick={e => deleteGig(props.gig)}>
+                <a href="#" onClick={e => deleteGig(props.gig).then(res => {
+                  props.dispatch({type: 'CLEAR_GIG_STATE'})
+                  props.history.push('/project/gigs')
+                  }
+                )}>
                   <i className="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                 </a>
-                {/*
-                <Link to="/project/gigs/add-form">
-                  <i className="fa fa-pencil fa-2x ml4" aria-hidden="true"/>
-                </Link>
-                */}
                 <Link to="/project/gigs">
                   <i className="fa fa-close fa-2x ml4" aria-hidden="true"/>
                 </Link>
