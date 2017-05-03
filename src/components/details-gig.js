@@ -6,6 +6,17 @@ import fetch from 'isomorphic-fetch'
 import ListItemGigSetlist from '../components/list-item-gig-setlist'
 import ButtonBasic from '../components/button-basic'
 
+const deleteGig = (gig) => {
+  console.log('gig to delete', gig)
+  return fetch(`http://localhost:8080/gigs/${gig._id}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'DELETE',
+    body: JSON.stringify(gig)
+  }).then(res => res.json())
+}
+
 class DetailsGig extends React.Component{
   componentDidMount() {
     fetch(`http://localhost:8080/gigs/${this.props.match.params.id}`)
@@ -32,11 +43,13 @@ class DetailsGig extends React.Component{
                 <Link to={`/project/gigs/${this.props.match.params.id}/review-form`}>
                   <i className="fa fa-star fa-2x" aria-hidden="true"></i>
                 </Link>
-                {/*
-                <Link to="/project/gigs/add-form">
-                  <i className="fa fa-pencil fa-2x ml4" aria-hidden="true"/>
-                </Link>
-                */}
+                <a href="#" onClick={e => deleteGig(props.gig).then(res => {
+                  props.dispatch({type: 'CLEAR_GIG_STATE'})
+                  props.history.push('/project/gigs')
+                  }
+                )}>
+                  <i className="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </a>
                 <Link to="/project/gigs">
                   <i className="fa fa-close fa-2x ml4" aria-hidden="true"/>
                 </Link>
